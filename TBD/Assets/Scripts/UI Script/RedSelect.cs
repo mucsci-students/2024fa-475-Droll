@@ -15,6 +15,9 @@ public class RedSelect : MonoBehaviour
     public GridManager myGridScript;
     public float topRow;
     public float botRow;
+    public float top1Row;
+    public float bot1Row;
+
 
     public int r;
     public int c;
@@ -35,23 +38,30 @@ public class RedSelect : MonoBehaviour
         //only needed once but has to be after grid is set up
         topRow = myGridScript.topRowBorder;
         botRow = myGridScript.botRowBorder;
-        
+        top1Row = topRow - myGridScript.vSize;
+        bot1Row = botRow + myGridScript.vSize;
 
         //adjust selector verttically based on player pos
         rgPos = redGuy.transform.position.y;
         if(rgPos > topRow){
             r = 0;
         }
+        else if(rgPos > top1Row){
+            r = 1;
+        }
         else if (rgPos < botRow){
-            r = 2;
+            r = 4;
+        }
+        else if (rgPos < bot1Row){
+            r = 3;
         }
         else{
-            r = 1;
+            r = 2;
         }
 
         //adjust selector horizontaly based on keys
         if(Input.GetKeyDown(KeyCode.D)){
-            c = Mathf.Min(c+1, 4);
+            c = Mathf.Min(c+1, 5);
         }
         if(Input.GetKeyDown(KeyCode.A)){
             c = Mathf.Max(c-1, 1);

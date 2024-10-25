@@ -36,14 +36,14 @@ public class GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gridMap = new GridPoint[3, 10];
+        gridMap = new GridPoint[5, 12];
 
         // get bounds of sprite
         mySprite = GetComponent<SpriteRenderer>();
         upEdge = mySprite.bounds.extents.y;
         rigEdge = mySprite.bounds.extents.x;
-        vSize = upEdge / 2f;
-        hSize = rigEdge / 6f;
+        vSize = upEdge / 3f;
+        hSize = rigEdge / 7f;
         topBorder = upEdge - .5f * vSize;
         botBorder = -topBorder;
         topRowBorder = topBorder - vSize;
@@ -52,8 +52,8 @@ public class GridManager : MonoBehaviour
 
         //set red's Grid
         tempPos = new Vector3( -rigEdge + hSize, upEdge - vSize, 0f);
-        for (int j = 0; j < 3; j++){
-            for (int i = 0; i < 5; i++){
+        for (int j = 0; j < 5; j++){
+            for (int i = 0; i < 6; i++){
                 gridMap[j,i] = new GridPoint(tempPos);
 
                 Instantiate(tempr, tempPos, Quaternion.identity);
@@ -66,8 +66,8 @@ public class GridManager : MonoBehaviour
 
         //set blue's Grid
         tempPos = new Vector3( rigEdge - hSize, upEdge - vSize, 0f);
-        for (int j = 0; j < 3; j++){
-            for (int i = 10; i > 5; i--){
+        for (int j = 0; j < 5; j++){
+            for (int i = 12; i > 6; i--){
                 gridMap[j,i-1] = new GridPoint(tempPos);
 
                 Instantiate(tempb, tempPos, Quaternion.identity);

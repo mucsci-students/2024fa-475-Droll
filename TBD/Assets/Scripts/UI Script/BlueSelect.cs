@@ -15,6 +15,9 @@ public class BlueSelect : MonoBehaviour
     public GridManager myGridScript;
     public float topRow;
     public float botRow;
+    public float top1Row;
+    public float bot1Row;
+
 
     public int r;
     public int c;
@@ -35,24 +38,32 @@ public class BlueSelect : MonoBehaviour
         //only needed once but has to be after grid is set up
         topRow = myGridScript.topRowBorder;
         botRow = myGridScript.botRowBorder;
+        top1Row = topRow - myGridScript.vSize;
+        bot1Row = botRow + myGridScript.vSize;
         
 
         bgPos = blueGuy.transform.position.y;
         if(bgPos > topRow){
             r = 0;
         }
+        else if(bgPos > top1Row){
+            r = 1;
+        }
         else if (bgPos < botRow){
-            r = 2;
+            r = 4;
+        }
+        else if (bgPos < bot1Row){
+            r = 3;
         }
         else{
-            r = 1;
+            r = 2;
         }
 
         if(Input.GetKeyDown(KeyCode.RightArrow)){
-            c = Mathf.Min(c+1, 8);
+            c = Mathf.Min(c+1, 10);
         }
         if(Input.GetKeyDown(KeyCode.LeftArrow)){
-            c = Mathf.Max(c-1, 5);
+            c = Mathf.Max(c-1, 6);
         }
 
         ref var curPoint = ref myGridScript.gridMap[r,c];
