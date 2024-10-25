@@ -136,7 +136,7 @@ MonoBehaviour:
   blueShoot: {fileID: 8448706715978753902, guid: dc50d6c3e5d1efb46a57adfe746b7d72, type: 3}
   blueBar: {fileID: 2079450926822292973, guid: 061dbc106fe34c149b4fffb47570331d, type: 3}
   blueWalk: {fileID: 7680659932980440178, guid: b8c957ccb6da87d43be4dfe5fb9f284f, type: 3}
-  blueSpike: {fileID: 395176744675448940, guid: 6604b1cf91cfc974cbb4004a2b8cc99a, type: 3}
+  blueRunner: {fileID: 395176744675448940, guid: 6604b1cf91cfc974cbb4004a2b8cc99a, type: 3}
   bgPos: 0
   myGrid: {fileID: 0}
   myGridScript: {fileID: 0}

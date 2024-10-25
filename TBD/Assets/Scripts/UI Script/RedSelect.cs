@@ -8,7 +8,7 @@ public class RedSelect : MonoBehaviour
     public GameObject redShoot;
     public GameObject redBar;
     public GameObject redWalk;
-    public GameObject redSpike;
+    public GameObject redRunner;
     public float rgPos;
 
     public GameObject myGrid;
@@ -73,20 +73,19 @@ public class RedSelect : MonoBehaviour
         //Place Barrior on 1 key
         if(Input.GetKeyDown(KeyCode.Alpha1)){
             if(!curPoint.isFull){
-                Instantiate(redBar, transform.position, Quaternion.identity);
+                var newGuy =  Instantiate(redBar, transform.position, Quaternion.identity).GetComponent<RedBarScript>();
                 curPoint.isFull = true;
+                newGuy.r = r;
+                newGuy.c = c;
             }
         }
         //Place Walekr on 3 key
         if(Input.GetKeyDown(KeyCode.Alpha3)){
             Instantiate(redWalk, transform.position, Quaternion.identity);
         }
-        //place spike on 4
+        //place runner on 4
         if(Input.GetKeyDown(KeyCode.Alpha4)){
-            if(!curPoint.isFull){
-                var newGuy = Instantiate(redSpike, transform.position, Quaternion.identity);
-                curPoint.isFull = true;
-            }
+            Instantiate(redRunner, transform.position, Quaternion.identity);
         }
     }
 }

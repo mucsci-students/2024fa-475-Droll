@@ -49,6 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redGuy: {fileID: 0}
+  redShoot: {fileID: 8448706715978753902, guid: 9d4b0e010147d624691538e83a6e8341, type: 3}
+  redBar: {fileID: 2079450926822292973, guid: 83952389e23ceae4e9cd51901671fbb4, type: 3}
+  redWalk: {fileID: 7680659932980440178, guid: 0a30fe0b4d0702a4b99b9888f934449b, type: 3}
+  redRunner: {fileID: 395176744675448940, guid: 710ada9a633f34b4793cdf798072ee58, type: 3}
   rgPos: 0
   myGrid: {fileID: 0}
   myGridScript: {fileID: 0}

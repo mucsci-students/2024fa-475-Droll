@@ -8,7 +8,7 @@ public class BlueSelect : MonoBehaviour
     public GameObject blueShoot;
     public GameObject blueBar;
     public GameObject blueWalk;
-    public GameObject blueSpike;
+    public GameObject blueRunner;
     public float bgPos;
 
     public GameObject myGrid;
@@ -61,14 +61,16 @@ public class BlueSelect : MonoBehaviour
         //Place Barrior on 1 key
         if(Input.GetKeyDown(KeyCode.Keypad1)){
             if(!curPoint.isFull){
-                Instantiate(blueBar, transform.position, Quaternion.identity);
+                var newGuy =  Instantiate(blueBar, transform.position, Quaternion.identity).GetComponent<BlueBarScript>();
                 curPoint.isFull = true;
+                newGuy.r = r;
+                newGuy.c = c;
             }
         }
         //Place Shoot on 2 key
         if(Input.GetKeyDown(KeyCode.Keypad2)){
             if(!curPoint.isFull){
-                var newGuy =  Instantiate(blueShoot, transform.position, Quaternion.identity).GetComponent<RedShoot>();
+                var newGuy = Instantiate(blueShoot, transform.position, Quaternion.identity).GetComponent<BlueShoot>();
                 curPoint.isFull = true;
                 newGuy.r = r;
                 newGuy.c = c;
@@ -78,12 +80,9 @@ public class BlueSelect : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Keypad3)){
             Instantiate(blueWalk, transform.position, Quaternion.identity);
         }
-        //place spike on 4
+        //place runner on 4
         if(Input.GetKeyDown(KeyCode.Keypad4)){
-            if(!curPoint.isFull){
-                var newGuy = Instantiate(blueSpike, transform.position, Quaternion.identity);
-                curPoint.isFull = true;
-            }
+            Instantiate(blueRunner, transform.position, Quaternion.identity);
         }
     }
 }

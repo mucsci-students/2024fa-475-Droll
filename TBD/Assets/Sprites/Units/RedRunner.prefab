@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9112885524881990300}
+  - component: {fileID: -208191625600829597}
   - component: {fileID: -3106567963318899589}
-  m_Layer: 17
-  m_Name: BlueSpike
+  - component: {fileID: -1303832205105175076}
+  m_Layer: 16
+  m_Name: RedRunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,6 +35,22 @@ Transform:
   - {fileID: 275728129307635873}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-208191625600829597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395176744675448940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d58314ae72cff4bb275a1037e3f697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  timePassed: 0
+  backup: 0
+  movespeed: 0
 --- !u!61 &-3106567963318899589
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -78,6 +96,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2865553, y: 0.26881647}
   m_EdgeRadius: 0
+--- !u!50 &-1303832205105175076
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395176744675448940}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1719181936245185331
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 275728129307635873}
   - component: {fileID: 1797505117902665039}
-  m_Layer: 17
+  m_Layer: 16
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,9 +195,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0, g: 0.99215686, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
