@@ -42,11 +42,11 @@ public class RedShoot : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col){
         //hit by bullet
-        if(col.gameObject.layer == 11){
+        if(col.gameObject.layer == 11 || col.gameObject.layer == 20){
             health -= 4;
         }
         //hit by walker
-        else if (col.gameObject.layer == 13){
+        else if (col.gameObject.layer == 13 || col.gameObject.layer == 18){
             health -= 20;
         }
         //hit by runner

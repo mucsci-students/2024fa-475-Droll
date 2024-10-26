@@ -32,7 +32,7 @@ public class BlueBarScript : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col){
         //hit by walker
-        if (col.gameObject.layer == 12){
+        if (col.gameObject.layer == 12 || col.gameObject.layer == 18){
             health -= 10;
         }
         //hit by runner

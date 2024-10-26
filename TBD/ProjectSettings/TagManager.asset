@@ -6,6 +6,7 @@ TagManager:
   tags:
   - red
   - blue
+  - gray
   layers:
   - Default
   - TransparentFX
@@ -25,9 +26,9 @@ TagManager:
   - BlueBar
   - RedRunner
   - BlueRunner
-  - 
-  - 
-  - 
+  - GrayWalker
+  - GrayShoot
+  - GrayBullet
   - 
   - 
   - 

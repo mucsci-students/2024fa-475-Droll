@@ -32,7 +32,7 @@ public class RedBarScript : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col){
         //hit by walker
-        if (col.gameObject.layer == 13){
+        if (col.gameObject.layer == 13 || col.gameObject.layer == 18){
             health -= 10;
         }
         //hit by runner

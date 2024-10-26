@@ -42,11 +42,11 @@ public class BlueShoot : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col){
         //hit by bullet
-        if(col.gameObject.layer == 10){
+        if(col.gameObject.layer == 10 || col.gameObject.layer == 20){
             health -= 3;
         }
         //hit by walker
-        else if (col.gameObject.layer == 12){
+        else if (col.gameObject.layer == 12 || col.gameObject.layer == 18){
             health -= 10;
         }
         //hit by runner

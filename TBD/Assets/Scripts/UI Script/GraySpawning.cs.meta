@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6467b1816ecec5a4d8c2b3459bc3a1e9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - walkLeft: {instanceID: 0}
+  - walkRight: {instanceID: 0}
+  - ShootLeft: {instanceID: 0}
+  - ShootRight: {instanceID: 0}
+  - gridScript: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

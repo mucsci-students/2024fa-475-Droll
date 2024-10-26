@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedWalkerScript : MonoBehaviour
+public class BlueWalkerScript : MonoBehaviour
 {
     public int health;
 
@@ -10,15 +10,15 @@ public class RedWalkerScript : MonoBehaviour
     public bool backup;
     public float movespeed;
 
-    public BlueMoveScript blueGuyScript;
-
+    public RedMoveScript redGuyScript;
+    
     // Start is called before the first frame update
     void Start()
     {
         health = 20;
         movespeed = 1f;
 
-        blueGuyScript = GameObject.Find("BlueGuy").GetComponent<BlueMoveScript>();
+        redGuyScript = GameObject.Find("RedGuy").GetComponent<RedMoveScript>();
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class RedWalkerScript : MonoBehaviour
     {
         //On death
         if(health <= 0){
-            blueGuyScript.money += 30;
+            redGuyScript.money += 30;
 
             Destroy(gameObject);
         }
@@ -46,28 +46,30 @@ public class RedWalkerScript : MonoBehaviour
 
 
         //Walk to other side (unless backup)
-        transform.position += new Vector3(1f, 0f, 0f) * movespeed * Time.deltaTime;
+        transform.position += new Vector3(-1f, 0f, 0f) * movespeed * Time.deltaTime;
     }
 
+    //DAMAGE TAKEN
     public void OnTriggerEnter2D(Collider2D col){
         //hit by bullet
-        if(col.gameObject.layer == 11){
+        if(col.gameObject.layer == 10 || col.gameObject.layer == 20){
             health -= 5;
         }
         //hit by walker
-        else if (col.gameObject.layer == 13){
+        else if (col.gameObject.layer == 12  || col.gameObject.layer == 18){
             health -= 20;
         }
         //hit by runner
-        else if (col.gameObject.layer == 17){
+        else if (col.gameObject.layer == 16){
             health -= 5;
         }
+
         //hits enemy barrior
-        else if (col.gameObject.layer == 15){
+        else if (col.gameObject.layer == 14){
             backup = true;
         }
         //hits enemy wall
-        else if (col.gameObject.layer == 7){
+        else if (col.gameObject.layer == 6){
             health -= 999;
         }
     }
