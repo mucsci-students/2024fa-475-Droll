@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: -813742744417641085}
   m_Layer: 9
   m_Name: BlueShoot
-  m_TagString: Untagged
+  m_TagString: blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

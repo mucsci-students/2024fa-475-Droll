@@ -14,12 +14,27 @@ public class RightWall : MonoBehaviour
     {
         gridSprite = GameObject.Find("Grid").GetComponent<SpriteRenderer>();
         transform.position = new Vector3(gridSprite.bounds.extents.x - 3f * gridSprite.bounds.extents.x / 14f , 0f, 0f);
-        health = 1000;
+        health = 300;
     }
 
     void Update(){
         if (health <= 0){
             blueGameOver = true;
+        }
+    }
+    
+    public void OnTriggerEnter2D(Collider2D col){
+        //hit by bullet
+        if(col.gameObject.layer == 10){
+            health -= 2;
+        }
+        //hit by walker
+        else if (col.gameObject.layer == 12){
+            health -= 10;
+        }
+        //hit by runner
+        else if (col.gameObject.layer == 16){
+            health -= 5;
         }
     }
 

@@ -34,6 +34,10 @@ public class GridManager : MonoBehaviour
 
     public GridPoint[,] gridMap;
 
+    public RightWall rightWallScript;
+    public LeftWall leftWallScript;
+    public bool redIsDead;
+    public bool blueIsDead;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +53,9 @@ public class GridManager : MonoBehaviour
         botBorder = -topBorder;
         topRowBorder = topBorder - vSize;
         botRowBorder = -topRowBorder;
+
+        rightWallScript = GameObject.Find("right wall").GetComponent<RightWall>();
+        leftWallScript = GameObject.Find("left wall").GetComponent<LeftWall>();
 
 
         //set red's Grid
@@ -79,6 +86,7 @@ public class GridManager : MonoBehaviour
             tempPos.y -= vSize;
         }
 
+        //set gray grid
         tempPos = new Vector3( 0f, upEdge - vSize, 0f);
         for (int j = 0; j < 5; j++){
             
@@ -94,9 +102,19 @@ public class GridManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Delete all dead color objects
+        redIsDead = leftWallScript.redGameOver;
+        blueIsDead = rightWallScript.blueGameOver;
+        if(redIsDead){
+            GameObject[] redObjects = GameObject.FindGameObjectsWithTag("red");
+            foreach(GameObject ro in redObjects)
+                Destroy(ro);
+        }
+        if(blueIsDead){
+            GameObject[] blueObjects = GameObject.FindGameObjectsWithTag("blue");
+            foreach(GameObject bo in blueObjects)
+                Destroy(bo);
+        }
     }
-
-    
 }
 

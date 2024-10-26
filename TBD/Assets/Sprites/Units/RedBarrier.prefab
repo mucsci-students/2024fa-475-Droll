@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4897608577559686804}
   m_Layer: 14
   m_Name: RedBarrier
-  m_TagString: Untagged
+  m_TagString: red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,8 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  timePassed: 0
-  invlune: 0
   r: 0
   c: 0
 --- !u!50 &6883134446302573815

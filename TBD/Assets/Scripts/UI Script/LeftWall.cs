@@ -14,7 +14,7 @@ public class LeftWall : MonoBehaviour
         gridSprite = GameObject.Find("Grid").GetComponent<SpriteRenderer>();
         transform.position = new Vector3(-gridSprite.bounds.extents.x + 3f * gridSprite.bounds.extents.x / 14f , 0f, 0f);
         
-        health = 1000;
+        health = 300;
     }
 
     void Update(){
@@ -22,4 +22,20 @@ public class LeftWall : MonoBehaviour
             redGameOver = true;
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D col){
+        //hit by bullet
+        if(col.gameObject.layer == 11){
+            health -= 2;
+        }
+        //hit by walker
+        else if (col.gameObject.layer == 13){
+            health -= 10;
+        }
+        //hit by runner
+        else if (col.gameObject.layer == 17){
+            health -= 5;
+        }
+    }
+
 }

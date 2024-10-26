@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2304443766156518288}
   m_Layer: 0
   m_Name: BlueSelctor
-  m_TagString: Untagged
+  m_TagString: blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,12 +138,17 @@ MonoBehaviour:
   blueWalk: {fileID: 7680659932980440178, guid: b8c957ccb6da87d43be4dfe5fb9f284f, type: 3}
   blueRunner: {fileID: 395176744675448940, guid: 6604b1cf91cfc974cbb4004a2b8cc99a, type: 3}
   bgPos: 0
+  bgScript: {fileID: 0}
   myGrid: {fileID: 0}
   myGridScript: {fileID: 0}
   topRow: 0
   botRow: 0
+  top1Row: 0
+  bot1Row: 0
   r: 0
   c: 0
+  rightWallScript: {fileID: 0}
+  isDead: 0
 --- !u!1 &3411144155882602930
 GameObject:
   m_ObjectHideFlags: 0

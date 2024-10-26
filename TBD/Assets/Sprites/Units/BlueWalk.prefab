@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: -8411382450833345656}
   m_Layer: 13
   m_Name: BlueWalk
-  m_TagString: Untagged
+  m_TagString: blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -629,3 +629,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  timePassed: 0
+  backup: 0
+  movespeed: 0

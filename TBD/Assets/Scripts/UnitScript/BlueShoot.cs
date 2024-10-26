@@ -35,6 +35,7 @@ public class BlueShoot : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D col){
+        //hit by bullet
         if(col.gameObject.layer == 10){
             health -= 3;
         }
