@@ -10,10 +10,14 @@ public class BlueShoot : MonoBehaviour
     public int r;
     public int c;
 
+    public RedMoveScript redGuyScript;
+    
     // Start is called before the first frame update
     void Start()
     {
         health = 10;
+
+        redGuyScript = GameObject.Find("RedGuy").GetComponent<RedMoveScript>();
     }
 
     // Update is called once per frame
@@ -21,6 +25,8 @@ public class BlueShoot : MonoBehaviour
     {
         //ON DEATH
         if(health <= 0){
+            redGuyScript.money += 15;
+
             GameObject.Find("Grid").GetComponent<GridManager>().gridMap[r,c].isFull = false;
             Destroy(gameObject);
         }

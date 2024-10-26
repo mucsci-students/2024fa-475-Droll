@@ -598,10 +598,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4157069920734352319, guid: 701e7e0549c3f3542872c02c42c8a650, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157069920734352319, guid: 701e7e0549c3f3542872c02c42c8a650, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.5
       objectReference: {fileID: 0}
@@ -644,10 +640,6 @@ PrefabInstance:
     - target: {fileID: 9158762546631276738, guid: 701e7e0549c3f3542872c02c42c8a650, type: 3}
       propertyPath: m_Name
       value: left wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 9158762546631276738, guid: 701e7e0549c3f3542872c02c42c8a650, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -912,18 +904,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: right wall
       objectReference: {fileID: 0}
-    - target: {fileID: 4773153236687306325, guid: c846d801869d99a40b9d8dcf12b8d3df, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5358958743043655089, guid: c846d801869d99a40b9d8dcf12b8d3df, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 5358958743043655089, guid: c846d801869d99a40b9d8dcf12b8d3df, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 5358958743043655089, guid: c846d801869d99a40b9d8dcf12b8d3df, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.5
@@ -1021,6 +1001,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4701102348003833918, guid: 705bfbb7af5ca4e428ef550e9a9835e3, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6804693810429673083, guid: 705bfbb7af5ca4e428ef550e9a9835e3, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -1055,7 +1039,7 @@ SceneRoots:
   - {fileID: 2810341428776408514}
   - {fileID: 4099149744584456857}
   - {fileID: 6312774132524868216}
-  - {fileID: 6384189790662855309}
   - {fileID: 485892110257791594}
   - {fileID: 867627865}
   - {fileID: 613958035}
+  - {fileID: 6384189790662855309}

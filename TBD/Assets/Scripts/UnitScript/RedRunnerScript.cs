@@ -10,11 +10,15 @@ public class RedRunnerScript : MonoBehaviour
     public bool backup;
     public float movespeed;
 
+    public BlueMoveScript blueGuyScript;
+
     // Start is called before the first frame update
     void Start()
     {
         health = 10;
         movespeed = 3f;
+
+        blueGuyScript = GameObject.Find("BlueGuy").GetComponent<BlueMoveScript>();
     }
 
     // Update is called once per frame
@@ -22,6 +26,8 @@ public class RedRunnerScript : MonoBehaviour
     {
         //On death
         if(health <= 0){
+            blueGuyScript.money += 25;
+
             Destroy(gameObject);
         }
 

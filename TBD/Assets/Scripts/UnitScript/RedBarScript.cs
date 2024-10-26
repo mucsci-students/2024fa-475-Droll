@@ -8,11 +8,14 @@ public class RedBarScript : MonoBehaviour
     public int r;
     public int c;
 
+    public BlueMoveScript blueGuyScript;
 
     // Start is called before the first frame update
     void Start()
     {
         health = 30;
+
+        blueGuyScript = GameObject.Find("BlueGuy").GetComponent<BlueMoveScript>();
     }
 
     // Update is called once per frame
@@ -20,6 +23,8 @@ public class RedBarScript : MonoBehaviour
     {
         //on death
         if(health <= 0){
+            blueGuyScript.money += 20;
+
             GameObject.Find("Grid").GetComponent<GridManager>().gridMap[r,c].isFull = false;
             Destroy(gameObject);
         }
