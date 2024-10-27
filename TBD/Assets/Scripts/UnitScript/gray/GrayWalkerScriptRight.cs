@@ -36,6 +36,8 @@ public class GrayWalkerRightScript : MonoBehaviour
                 blueGuyScript.money += 30;
             }
 
+            GameObject.Find("GrayManager").GetComponent<GraySpawning>().bossTimer -= 1;
+
             Destroy(gameObject);
         }
 
@@ -101,6 +103,17 @@ public class GrayWalkerRightScript : MonoBehaviour
                 lastHitRed = false;
             }
             health -= 999;
+        }
+
+        //hit by atkpowerup
+        else if (col.gameObject.layer == 23 || col.gameObject.layer == 24){
+            if(col.gameObject.layer == 23){
+                lastHitRed = true;
+            }
+            else{
+                lastHitRed = false;
+            }
+            health -= 14;
         }
     }
 }

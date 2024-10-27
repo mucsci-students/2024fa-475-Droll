@@ -8,6 +8,7 @@ public class GraySpawning : MonoBehaviour
     public GameObject walkRight;
     public GameObject ShootLeft;
     public GameObject ShootRight;
+    public GameObject boss;
 
     public GridManager gridScript;
 
@@ -19,11 +20,15 @@ public class GraySpawning : MonoBehaviour
 
     public int shootDir;
 
+    public int bossTimer;
+    public bool bossAlive;
+
     // Start is called before the first frame update
     void Start()
     {
         gridScript = GameObject.Find("Grid").GetComponent<GridManager>();
         c = 6;
+        bossTimer = 50;
     }
 
     // Update is called once per frame
@@ -31,7 +36,9 @@ public class GraySpawning : MonoBehaviour
     {
         timePassed += Time.deltaTime;
         timePassed1 += Time.deltaTime;
-        if (timePassed > 2f){
+
+        //spawns walkers
+        if (timePassed > 5f){
             r = Random.Range(0, 5);
             Instantiate(walkLeft, gridScript.gridMap[r,c].pos, Quaternion.identity);
             r = Random.Range(0, 5);
@@ -39,7 +46,9 @@ public class GraySpawning : MonoBehaviour
 
             timePassed = 0;
         }
-        if(timePassed1 > 7){
+
+        //spawns shooters
+        if(timePassed1 > 20){
             shootDir = Random.Range(0,2);
             r = Random.Range(0, 5);
             if(shootDir == 1 && !gridScript.gridMap[r,c].isFull){
@@ -71,6 +80,13 @@ public class GraySpawning : MonoBehaviour
             }
 
             timePassed1 = 0;
+        }
+
+        //spawns boss
+        if(bossTimer <= 0 && !bossAlive){
+            Instantiate(boss, gridScript.gridMap[2,c].pos, Quaternion.identity);
+            bossAlive = true;
+            bossTimer = 50;
         }
     }
 }

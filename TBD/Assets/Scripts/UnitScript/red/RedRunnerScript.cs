@@ -34,7 +34,7 @@ public class RedRunnerScript : MonoBehaviour
         //on backup movespeed is halved and inverted
         if(backup){
             timePassed += Time.deltaTime;
-            if (timePassed < 1){
+            if (timePassed < .75){
                 movespeed = -1.5f;
             }
             else{
@@ -56,11 +56,11 @@ public class RedRunnerScript : MonoBehaviour
         }
         //hit by walker
         else if (col.gameObject.layer == 13 || col.gameObject.layer == 18){
-            health -= 10;
+            health -= 999;
         }
         //hit by runner
         else if (col.gameObject.layer == 17){
-            health -= 10;
+            health -= 999;
         }
 
         //hits enemy barrior
@@ -74,6 +74,24 @@ public class RedRunnerScript : MonoBehaviour
         //hits enemy wall
         else if (col.gameObject.layer == 7){
             health -= 999;
+        }
+        
+        //hit by healpowerup
+        else if (col.gameObject.layer == 21){
+            health += 10;
+        }
+        //hit by atkpowerup
+        else if (col.gameObject.layer == 24){
+            health -= 7;
+        }
+        //hit by spdUPpowerup
+        else if (col.gameObject.layer == 25){
+            movespeed = 6;
+        }
+
+        //hit by bossball
+        else if (col.gameObject.layer == 28){
+            health -= 5;
         }
     }
 }

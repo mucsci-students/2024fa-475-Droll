@@ -36,6 +36,8 @@ public class GrayShootLeft : MonoBehaviour
             }
 
             GameObject.Find("Grid").GetComponent<GridManager>().gridMap[r,c].isFull = false;
+            GameObject.Find("GrayManager").GetComponent<GraySpawning>().bossTimer -= 1;
+
             Destroy(gameObject);
         }
 
@@ -78,6 +80,17 @@ public class GrayShootLeft : MonoBehaviour
                 lastHitRed = false;
             }
             health -= 5;
+        }
+
+        //hit by atkpowerup
+        else if (col.gameObject.layer == 23 || col.gameObject.layer == 24){
+            if(col.gameObject.layer == 23){
+                lastHitRed = true;
+            }
+            else{
+                lastHitRed = false;
+            }
+            health -= 14;
         }
     }
     

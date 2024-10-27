@@ -29,14 +29,14 @@ TagManager:
   - GrayWalker
   - GrayShoot
   - GrayBullet
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - redHeal
+  - blueHeal
+  - redAtk
+  - blueAtk
+  - redSpdUp
+  - blueSpdUp
+  - Boss
+  - BossBall
   - 
   - 
   - 

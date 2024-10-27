@@ -9,17 +9,12 @@ public class BlueSelect : MonoBehaviour
     public GameObject blueBar;
     public GameObject blueWalk;
     public GameObject blueRunner;
-    public float bgPos;
 
     public BlueMoveScript bgScript;
 
     public GameObject myGrid;
     public GridManager myGridScript;
-    public float topRow;
-    public float botRow;
-    public float top1Row;
-    public float bot1Row;
-
+    
     public int r;
     public int c;
 
@@ -36,6 +31,7 @@ public class BlueSelect : MonoBehaviour
         myGridScript = myGrid.GetComponent<GridManager>();
         
         c = 11;
+        r = 2;
 
         rightWallScript = GameObject.Find("right wall").GetComponent<RightWall>();
     }
@@ -46,36 +42,14 @@ public class BlueSelect : MonoBehaviour
         isDead = rightWallScript.blueGameOver;
         if (!isDead){
 
-            //only needed once but has to be after grid is set up
-            topRow = myGridScript.topRowBorder;
-            botRow = myGridScript.botRowBorder;
-            top1Row = topRow - myGridScript.vSize;
-            bot1Row = botRow + myGridScript.vSize;
-            
-
-            bgPos = blueGuy.transform.position.y;
-            if(bgPos > topRow){
-                r = 0;
-            }
-            else if(bgPos > top1Row){
-                r = 1;
-            }
-            else if (bgPos < botRow){
-                r = 4;
-            }
-            else if (bgPos < bot1Row){
-                r = 3;
-            }
-            else{
-                r = 2;
-            }
-
             if(Input.GetKeyDown(KeyCode.RightArrow)){
                 c = Mathf.Min(c+1, 11);
             }
             if(Input.GetKeyDown(KeyCode.LeftArrow)){
                 c = Mathf.Max(c-1, 7);
             }
+
+            r = bgScript.r;
 
             ref var curPoint = ref myGridScript.gridMap[r,c];
             transform.position = curPoint.pos;

@@ -2,61 +2,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrayWalkerLeftScript : MonoBehaviour
+public class BossScript : MonoBehaviour
 {
+    public GraySpawning gManager;
+
     public int health;
 
     public float timePassed;
-    public bool backup;
-    public float movespeed;
 
     public BlueMoveScript blueGuyScript;
     public RedMoveScript redGuyScript;
     public bool lastHitRed;
 
+    public GridManager myGridScript;
+
+    public GameObject ballRight;
+    public GameObject ballLeft;
+
     // Start is called before the first frame update
     void Start()
     {
-        health = 20;
-        movespeed = 1f;
+        health = 100;
+
+        gManager = GameObject.Find("GrayManager").GetComponent<GraySpawning>();
 
         blueGuyScript = GameObject.Find("BlueGuy").GetComponent<BlueMoveScript>();
         redGuyScript = GameObject.Find("RedGuy").GetComponent<RedMoveScript>();
+
+        myGridScript = GameObject.Find("Grid").GetComponent<GridManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //On death
         if(health <= 0){
             if(lastHitRed){
-                redGuyScript.money += 30;
+                redGuyScript.money += 100;
             }
             else{
-                blueGuyScript.money += 30;
+                blueGuyScript.money += 100;
             }
 
-            GameObject.Find("GrayManager").GetComponent<GraySpawning>().bossTimer -= 1;
+            gManager.bossAlive = false;
 
             Destroy(gameObject);
         }
 
-        //on backup movespeed is halved and inverted
-        if(backup){
-            timePassed += Time.deltaTime;
-            if (timePassed < 2){
-                movespeed = -.5f;
+        timePassed += Time.deltaTime;
+        if(timePassed > 10f){
+            for(int i = 0; i < 5; i++){
+                Instantiate(ballRight, myGridScript.gridMap[i,6].pos, Quaternion.identity);
+                Instantiate(ballLeft, myGridScript.gridMap[i,6].pos, Quaternion.identity);
             }
-            else{
-                movespeed = 1f;
-                backup = false;
-                timePassed = 0;
-            }
+            timePassed = 0;
         }
-
-
-        //Walk to other side (unless backup)
-        transform.position += new Vector3(-1f, 0f, 0f) * movespeed * Time.deltaTime;
     }
 
     public void OnTriggerEnter2D(Collider2D col){
@@ -68,7 +67,7 @@ public class GrayWalkerLeftScript : MonoBehaviour
             else{
                 lastHitRed = false;
             }
-            health -= 5;
+            health -= 4;
         }
         //hit by walker
         else if (col.gameObject.layer == 13 || col.gameObject.layer == 12){
@@ -88,32 +87,7 @@ public class GrayWalkerLeftScript : MonoBehaviour
             else{
                 lastHitRed = false;
             }
-            health -= 5;
-        }
-        //hits enemy barrior
-        else if (col.gameObject.layer == 15 || col.gameObject.layer == 14){
-            backup = true;
-        }
-        //hits enemy wall
-        else if (col.gameObject.layer == 7 || col.gameObject.layer == 6){
-            if(col.gameObject.layer == 6){
-                lastHitRed = true;
-            }
-            else{
-                lastHitRed = false;
-            }
-            health -= 999;
-        }
-
-        //hit by atkpowerup
-        else if (col.gameObject.layer == 23 || col.gameObject.layer == 24){
-            if(col.gameObject.layer == 23){
-                lastHitRed = true;
-            }
-            else{
-                lastHitRed = false;
-            }
-            health -= 14;
+            health -= 10;
         }
     }
 }

@@ -36,6 +36,11 @@ public class LeftWall : MonoBehaviour
         else if (col.gameObject.layer == 17){
             health -= 5;
         }
+
+        //hit by bossball
+        else if (col.gameObject.layer == 28){
+            health -= 10;
+        }
     }
 
 }

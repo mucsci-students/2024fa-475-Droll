@@ -13,6 +13,22 @@ public class RedMoveScript : MonoBehaviour
     public LeftWall leftWallScript;
     public bool isDead;
 
+    public GridManager myGridScript;
+
+    public float topRow;
+    public float botRow;
+    public float top1Row;
+    public float bot1Row;
+
+    public int r;
+
+    public GameObject redHeal;
+    public GameObject redAtk;
+    public GameObject redSpdUp;
+
+    public bool HealCD;
+    public bool AtkCD;
+    public bool SpdUpCD;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +38,8 @@ public class RedMoveScript : MonoBehaviour
         money = 250;
 
         gridSprite = GameObject.Find("Grid").GetComponent<SpriteRenderer>();
+        myGridScript = GameObject.Find("Grid").GetComponent<GridManager>();
+
         transform.position = new Vector3(-gridSprite.bounds.extents.x + gridSprite.bounds.extents.x / 7f , 0f, 0f);
 
         leftWallScript = GameObject.Find("left wall").GetComponent<LeftWall>();
@@ -34,6 +52,63 @@ public class RedMoveScript : MonoBehaviour
         if (!isDead){
             moveDir = new Vector3 (0f, Input.GetAxis("RedMove"), 0f);
             transform.position += Vector3.Normalize(moveDir) * moveSpeed * Time.deltaTime;
+
+            //only needed once but has to be after grid is set up
+            topRow = myGridScript.topRowBorder;
+            botRow = myGridScript.botRowBorder;
+            top1Row = topRow - myGridScript.vSize;
+            bot1Row = botRow + myGridScript.vSize;
+
+            //adjust selector verttically based on player pos
+            float y = transform.position.y;
+            if(y > topRow){
+                r = 0;
+            }
+            else if(y > top1Row){
+                r = 1;
+            }
+            else if (y < botRow){
+                r = 4;
+            }
+            else if (y < bot1Row){
+                r = 3;
+            }
+            else{
+                r = 2;
+            }
+
+            //hero actions
+            if(Input.GetKeyDown(KeyCode.Z) && !HealCD){
+                Instantiate(redHeal, myGridScript.gridMap[r,6].pos, Quaternion.identity);
+                StartCoroutine(healCDcounter());
+            }
+            if(Input.GetKeyDown(KeyCode.X) && !AtkCD){
+                Instantiate(redAtk, myGridScript.gridMap[r,6].pos, Quaternion.identity);
+                StartCoroutine(atkCDcounter());
+            }
+            if(Input.GetKeyDown(KeyCode.C) && !SpdUpCD){
+                Instantiate(redSpdUp, myGridScript.gridMap[r,6].pos, Quaternion.identity);
+                StartCoroutine(spdupCDcounter());
+            }
         }
+    }
+
+    IEnumerator healCDcounter()
+    {
+        HealCD = true;
+        yield return new WaitForSeconds(3f);
+        HealCD = false;
+    }
+    IEnumerator atkCDcounter()
+    {
+        AtkCD = true;
+        yield return new WaitForSeconds(3f);
+        AtkCD = false;
+    }
+    IEnumerator spdupCDcounter()
+    {
+        SpdUpCD = true;
+        yield return new WaitForSeconds(3f);
+        SpdUpCD = false;
     }
 }

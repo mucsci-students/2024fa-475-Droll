@@ -39,5 +39,19 @@ public class BlueBarScript : MonoBehaviour
         else if (col.gameObject.layer == 16){
             health -= 5;
         }
+        
+        //hit by healpowerup
+        else if (col.gameObject.layer == 22){
+            health += 30;
+        }
+        //hit by atkpowerup
+        else if (col.gameObject.layer == 23){
+            health -= 21;
+        }
+
+        //hit by bossball
+        else if (col.gameObject.layer == 28){
+            health -= 15;
+        }
     }
 }

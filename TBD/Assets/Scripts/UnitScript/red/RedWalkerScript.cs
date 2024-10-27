@@ -56,7 +56,7 @@ public class RedWalkerScript : MonoBehaviour
         }
         //hit by walker
         else if (col.gameObject.layer == 13 || col.gameObject.layer == 18){
-            health -= 20;
+            health -= 999;
         }
         //hit by runner
         else if (col.gameObject.layer == 17){
@@ -69,6 +69,24 @@ public class RedWalkerScript : MonoBehaviour
         //hits enemy wall
         else if (col.gameObject.layer == 7){
             health -= 999;
+        }
+        
+        //hit by healpowerup
+        else if (col.gameObject.layer == 21){
+            health += 20;
+        }
+        //hit by atkpowerup
+        else if (col.gameObject.layer == 24){
+            health -= 14;
+        }
+        //hit by spdUPpowerup
+        else if (col.gameObject.layer == 25){
+            movespeed = 2;
+        }
+
+        //hit by bossball
+        else if (col.gameObject.layer == 28){
+            health -= 10;
         }
     }
 }

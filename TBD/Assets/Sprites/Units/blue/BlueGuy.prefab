@@ -103,3 +103,12 @@ MonoBehaviour:
   gridSprite: {fileID: 0}
   rightWallScript: {fileID: 0}
   isDead: 0
+  myGridScript: {fileID: 0}
+  topRow: 0
+  botRow: 0
+  top1Row: 0
+  bot1Row: 0
+  r: 0
+  blueHeal: {fileID: 1280145242118765756, guid: 73d3b91ca94ffe24895441f0ef376ddd, type: 3}
+  blueAtk: {fileID: 2409873044398441311, guid: 5ebe63d97cbaa1347a34e7d060337d9b, type: 3}
+  blueSpdUp: {fileID: 2580992496480540643, guid: 52f5b46e7574a7c4492aa3442f11a993, type: 3}
