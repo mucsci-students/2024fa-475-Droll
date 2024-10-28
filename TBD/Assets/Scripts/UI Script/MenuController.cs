@@ -9,17 +9,30 @@ public class MenuController : MonoBehaviour
     //[SerializeField] GameObject mainMenu;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject pauseButton;
+    [SerializeField] GameObject blueWin;
+    [SerializeField] GameObject redWin;
+
+    bool gameOver;
+    bool blueWinBool;
     // Start is called before the first frame update
     void Start()
     {
+        blueWin.SetActive(false);
+        redWin.SetActive(false);
         pauseMenu.SetActive(false);
         //Time.timeScale = 0f;
         //mainMenu.SetActive(true);
+        gameOver = false;
+        blueWinBool = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(gameOver)
+        {
+            EndScreen();
+        }
     }
 
     public void PauseTheGame()
@@ -44,5 +57,16 @@ public class MenuController : MonoBehaviour
     public void Instructions()
     {
         //Open instruction menu.
+    }
+    public void EndScreen()
+    {   
+       if(blueWinBool)
+       {
+        blueWin.SetActive(true);
+       } 
+       else
+       {
+        redWin.SetActive(true);
+       }
     }
 }
