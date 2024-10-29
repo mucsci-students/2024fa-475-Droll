@@ -11,6 +11,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] GameObject pauseButton;
     [SerializeField] GameObject blueWin;
     [SerializeField] GameObject redWin;
+    [SerializeField] GameObject howToPlay;
+
 
     bool gameOver;
     bool blueWinBool;
@@ -20,6 +22,7 @@ public class MenuController : MonoBehaviour
         blueWin.SetActive(false);
         redWin.SetActive(false);
         pauseMenu.SetActive(false);
+        howToPlay.SetActive(false);
         //Time.timeScale = 0f;
         //mainMenu.SetActive(true);
         gameOver = false;
@@ -47,6 +50,7 @@ public class MenuController : MonoBehaviour
         //Close pause menu.
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        howToPlay.SetActive(false);
         pauseButton.SetActive(true);
     }
     public void ExitToMenu()
@@ -56,7 +60,13 @@ public class MenuController : MonoBehaviour
     }
     public void Instructions()
     {
-        //Open instruction menu.
+        pauseMenu.SetActive(false);
+        howToPlay.SetActive(true);
+    }
+    public void ReturnToPause()
+    {
+        pauseMenu.SetActive(true);
+        howToPlay.SetActive(false);
     }
     public void EndScreen()
     {   
