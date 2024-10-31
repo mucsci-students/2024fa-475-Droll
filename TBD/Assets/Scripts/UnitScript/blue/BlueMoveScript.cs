@@ -79,15 +79,15 @@ public class BlueMoveScript : MonoBehaviour
             }
 
             //hero actions
-            if(Input.GetKeyDown(KeyCode.Keypad7) && !HealCD){
+            if(Input.GetKeyDown(KeyCode.Keypad4) && !HealCD){
                 Instantiate(blueHeal, myGridScript.gridMap[r,6].pos, Quaternion.identity);
                 StartCoroutine(healCDcounter());
             }
-            if(Input.GetKeyDown(KeyCode.Keypad8) && !AtkCD){
+            if(Input.GetKeyDown(KeyCode.Keypad5) && !AtkCD){
                 Instantiate(blueAtk, myGridScript.gridMap[r,6].pos, Quaternion.identity);
                 StartCoroutine(atkCDcounter());
             }
-            if(Input.GetKeyDown(KeyCode.Keypad9) && !SpdUpCD){
+            if(Input.GetKeyDown(KeyCode.Keypad6) && !SpdUpCD){
                 Instantiate(blueSpdUp, myGridScript.gridMap[r,6].pos, Quaternion.identity);
                 StartCoroutine(spdupCDcounter());
             }

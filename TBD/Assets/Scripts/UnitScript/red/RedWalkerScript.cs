@@ -84,6 +84,10 @@ public class RedWalkerScript : MonoBehaviour
             movespeed = 2;
         }
 
+        //hits boss
+        else if (col.gameObject.layer == 28){
+            health -= 999;
+        }
         //hit by bossball
         else if (col.gameObject.layer == 28){
             health -= 10;
