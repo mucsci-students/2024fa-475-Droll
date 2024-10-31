@@ -20,8 +20,6 @@ public class MenuController : MonoBehaviour
     [SerializeField] TMP_Text redM;
     [SerializeField] TMP_Text enemyLeft;
 
-
-    bool gameOver;
     bool blueWinBool;
     public int moneyBlue;
     public int moneyRed;
@@ -42,6 +40,7 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         leftWall = GameObject.Find("left wall");
         leftWallScript = leftWall.GetComponent<LeftWall>();
         rightWall = GameObject.Find("right wall");
@@ -56,7 +55,6 @@ public class MenuController : MonoBehaviour
         redWin.SetActive(false);
         pauseMenu.SetActive(false);
         howToPlay.SetActive(false);
-        gameOver = false;
         blueWinBool = true;
         moneyBlue = blueGuyScript.money;
         moneyRed = redGuyScript.money;
@@ -68,8 +66,10 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameOver)
+        if((healthBlue<=0 || healthRed<=0))
         {
+            blueWinBool = (healthRed <= 0);
+            Time.timeScale = 0f;
             EndScreen();
         }
         moneyBlue = blueGuyScript.money;
@@ -117,6 +117,7 @@ public class MenuController : MonoBehaviour
     }
     public void EndScreen()
     {   
+        //Time.timeScale = 0f;
        if(blueWinBool)
        {
         blueWin.SetActive(true);
