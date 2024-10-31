@@ -112,5 +112,8 @@ public class BlueMoveScript : MonoBehaviour
         yield return new WaitForSeconds(3f);
         SpdUpCD = false;
     }
+    public int GetBlueMoney(){
+    return money;
+    }
 }
 

@@ -42,5 +42,9 @@ public class LeftWall : MonoBehaviour
             health -= 10;
         }
     }
+    public int GetRedHealth()
+    {
+        return health;
+    }
 
 }

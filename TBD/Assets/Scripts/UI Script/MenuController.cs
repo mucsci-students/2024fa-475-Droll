@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 
 public class MenuController : MonoBehaviour
@@ -12,21 +14,48 @@ public class MenuController : MonoBehaviour
     [SerializeField] GameObject blueWin;
     [SerializeField] GameObject redWin;
     [SerializeField] GameObject howToPlay;
+    [SerializeField] TMP_Text blueH;
+    [SerializeField] TMP_Text redH;
+    [SerializeField] TMP_Text blueM;
+    [SerializeField] TMP_Text redM;
 
 
     bool gameOver;
     bool blueWinBool;
+    public int moneyBlue;
+    public int moneyRed;
+    public int healthBlue;
+    public int healthRed;
+    public LeftWall leftWallScript;
+    public GameObject leftWall;
+    public RightWall rightWallScript;
+    public GameObject rightWall;
+    public RedMoveScript redGuyScript;
+    public GameObject redGuy;
+    public BlueMoveScript blueGuyScript;
+    public GameObject blueGuy;
+
     // Start is called before the first frame update
     void Start()
     {
+        leftWall = GameObject.Find("left wall");
+        leftWallScript = leftWall.GetComponent<LeftWall>();
+        rightWall = GameObject.Find("right wall");
+        rightWallScript = rightWall.GetComponent<RightWall>();
+        redGuy = GameObject.Find("RedGuy");
+        redGuyScript = redGuy.GetComponent<RedMoveScript>();
+        blueGuy = GameObject.Find("BlueGuy");
+        blueGuyScript = blueGuy.GetComponent<BlueMoveScript>();
         blueWin.SetActive(false);
         redWin.SetActive(false);
         pauseMenu.SetActive(false);
         howToPlay.SetActive(false);
-        //Time.timeScale = 0f;
-        //mainMenu.SetActive(true);
         gameOver = false;
         blueWinBool = true;
+        moneyBlue = blueGuyScript.money;
+        moneyRed = redGuyScript.money;
+        healthBlue = rightWallScript.health;
+        healthRed = leftWallScript.health;
     }
 
     // Update is called once per frame
@@ -36,6 +65,14 @@ public class MenuController : MonoBehaviour
         {
             EndScreen();
         }
+        moneyBlue = blueGuyScript.money;
+        moneyRed = redGuyScript.money;
+        healthBlue = rightWallScript.health;
+        healthRed = leftWallScript.health;
+        MoneyCountBlue();
+        MoneyCountRed();
+        HealthCountBlue();
+        HealthCountRed();
     }
 
     public void PauseTheGame()
@@ -78,5 +115,21 @@ public class MenuController : MonoBehaviour
        {
         redWin.SetActive(true);
        }
+    }
+    public void MoneyCountBlue()
+    {
+        blueM.text = "$" + moneyBlue;
+    }
+    public void MoneyCountRed()
+    {
+        redM.text = "$" + moneyRed;
+    }
+    public void HealthCountBlue()
+    {
+        blueH.text = "Health = " + healthBlue;
+    }
+    public void HealthCountRed()
+    {
+        redH.text = "Health = " + healthRed;
     }
 }

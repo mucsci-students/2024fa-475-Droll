@@ -42,6 +42,10 @@ public class RightWall : MonoBehaviour
             health -= 10;
         }
     }
+    public int GetBlueHealth()
+    {
+        return health;
+    }
 
 
 }

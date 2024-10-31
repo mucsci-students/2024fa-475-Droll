@@ -111,4 +111,7 @@ public class RedMoveScript : MonoBehaviour
         yield return new WaitForSeconds(3f);
         SpdUpCD = false;
     }
+    public int GetRedMoney(){
+        return money;
+    }
 }
