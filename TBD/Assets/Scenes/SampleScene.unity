@@ -5129,6 +5129,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940111868}
   m_CullTransparentMesh: 1
+--- !u!1 &1944498187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1944498189}
+  - component: {fileID: 1944498188}
+  m_Layer: 0
+  m_Name: BlueUnitManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1944498188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944498187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3911783f48583cb43a7e6c97a470093f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueWalker: {fileID: 7680659932980440178, guid: b8c957ccb6da87d43be4dfe5fb9f284f, type: 3}
+  blueRunner: {fileID: 395176744675448940, guid: 6604b1cf91cfc974cbb4004a2b8cc99a, type: 3}
+  blueBarrior: {fileID: 2079450926822292973, guid: 061dbc106fe34c149b4fffb47570331d, type: 3}
+  blueShoot: {fileID: 8448706715978753902, guid: dc50d6c3e5d1efb46a57adfe746b7d72, type: 3}
+  currentUnit: 0
+--- !u!4 &1944498189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944498187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.678601, y: 1.4153497, z: -0.066877276}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2098581626
 GameObject:
   m_ObjectHideFlags: 0
@@ -5988,3 +6037,4 @@ SceneRoots:
   - {fileID: 1007690954}
   - {fileID: 83584225}
   - {fileID: 1258158853}
+  - {fileID: 1944498189}

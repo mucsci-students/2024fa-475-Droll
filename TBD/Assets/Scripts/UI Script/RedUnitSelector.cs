@@ -31,14 +31,14 @@ public class RedUnitSelector : MonoBehaviour
         redWalkUnit.myObject = redWalker;
         redWalkUnit.cost = 60;
         redRunUnit = new myUnit();
-        redRunUnit.myObject = redWalker;
+        redRunUnit.myObject = redRunner;
         redRunUnit.cost = 50;
         redBarUnit = new myUnit();
-        redBarUnit.myObject = redWalker;
-        redBarUnit.cost = 60;
+        redBarUnit.myObject = redBarrior;
+        redBarUnit.cost = 40;
         redShootUnit = new myUnit();
-        redShootUnit.myObject = redWalker;
-        redShootUnit.cost = 40;
+        redShootUnit.myObject = redShoot;
+        redShootUnit.cost = 30;
 
         //init array
         Units = new myUnit[4];
@@ -55,14 +55,14 @@ public class RedUnitSelector : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1)){
             if(currentUnit == 0){
-                currentUnit = 4;
+                currentUnit = 3;
             }
             else{
                 currentUnit -=1;
             }
         }
         if(Input.GetKeyDown(KeyCode.Alpha3)){
-            if(currentUnit == 4){
+            if(currentUnit == 3){
                 currentUnit = 0;
             }
             else{

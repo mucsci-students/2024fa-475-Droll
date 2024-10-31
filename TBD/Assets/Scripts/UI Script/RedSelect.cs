@@ -5,10 +5,6 @@ using UnityEngine;
 public class RedSelect : MonoBehaviour
 {
     public GameObject redGuy;
-    public GameObject redShoot;
-    public GameObject redBar;
-    public GameObject redWalk;
-    public GameObject redRunner;
 
     public RedMoveScript rgScript;
 
@@ -62,55 +58,34 @@ public class RedSelect : MonoBehaviour
 
             ref int rgMoney = ref rgScript.money;
 
+            ref int curUnit = ref rus.currentUnit;
 
             //place unit
             if(Input.GetKeyDown(KeyCode.Alpha2)){
-                if(rus.Units[rus.currentUnit].cost <= rgMoney){
-                    Instantiate(rus.Units[rus.currentUnit].myObject, curPoint.pos, Quaternion.identity);
-                    rgMoney -= rus.Units[rus.currentUnit].cost;
+                if(rus.Units[curUnit].cost <= rgMoney){
+                    if(curUnit == 1 || curUnit == 0){
+                        if(!curPoint.isFull){
+                            var newguy = Instantiate(rus.Units[rus.currentUnit].myObject, curPoint.pos, Quaternion.identity);
+                            rgMoney -= rus.Units[rus.currentUnit].cost;
+                            curPoint.isFull = true;
+                            if(curUnit == 1){
+                                var ngs = newguy.GetComponent<RedShoot>();
+                                ngs.r = r;
+                                ngs.c = c;
+                            }
+                            else{
+                                var ngs = newguy.GetComponent<RedBarScript>();
+                                ngs.r = r;
+                                ngs.c = c;
+                            }
+                        }
+                    }
+                    else{
+                        Instantiate(rus.Units[rus.currentUnit].myObject, curPoint.pos, Quaternion.identity);
+                        rgMoney -= rus.Units[rus.currentUnit].cost;
+                    }
                 }
             }
-
-            /*
-            //Place Barrior on 1 key
-            if(Input.GetKeyDown(KeyCode.Alpha1)){
-                if(!curPoint.isFull && rgMoney >= 40){
-                    var newGuy =  Instantiate(redBar, transform.position, Quaternion.identity).GetComponent<RedBarScript>();
-                    curPoint.isFull = true;
-                    newGuy.r = r;
-                    newGuy.c = c;
-
-                    rgMoney -= 40;
-                }
-            }
-            //Place Shooter on 2 key
-            if(Input.GetKeyDown(KeyCode.Alpha2)){
-                if(!curPoint.isFull && rgMoney >= 30){
-                    var newGuy =  Instantiate(redShoot, transform.position, Quaternion.identity).GetComponent<RedShoot>();
-                    curPoint.isFull = true;
-                    newGuy.r = r;
-                    newGuy.c = c;
-
-                    rgMoney -= 30;
-                }
-            }
-            //Place Walekr on 3 key
-            if(Input.GetKeyDown(KeyCode.Alpha3)){
-                if(rgMoney >= 60){
-                    Instantiate(redWalk, transform.position, Quaternion.identity);
-
-                    rgMoney -= 60;
-                }
-            }
-            //place runner on 4
-            if(Input.GetKeyDown(KeyCode.Alpha4)){
-                if(rgMoney >= 50){
-                    Instantiate(redRunner, transform.position, Quaternion.identity);
-
-                    rgMoney -= 50;
-                }
-            }
-            */
         }
     }
 }

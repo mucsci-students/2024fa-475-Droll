@@ -5,10 +5,6 @@ using UnityEngine;
 public class BlueSelect : MonoBehaviour
 {
     public GameObject blueGuy;
-    public GameObject blueShoot;
-    public GameObject blueBar;
-    public GameObject blueWalk;
-    public GameObject blueRunner;
 
     public BlueMoveScript bgScript;
 
@@ -20,6 +16,8 @@ public class BlueSelect : MonoBehaviour
 
     public RightWall rightWallScript;
     public bool isDead;
+
+    public BlueUnitSelector bus;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +32,8 @@ public class BlueSelect : MonoBehaviour
         r = 2;
 
         rightWallScript = GameObject.Find("right wall").GetComponent<RightWall>();
+
+        bus = GameObject.Find("BlueUnitManager").GetComponent<BlueUnitSelector>();
     }
 
     // Update is called once per frame
@@ -56,42 +56,32 @@ public class BlueSelect : MonoBehaviour
 
             ref int bgMoney = ref bgScript.money;
 
-            //Place Barrior on 1 key
-            if(Input.GetKeyDown(KeyCode.Keypad1)){
-                if(!curPoint.isFull && bgMoney >= 40){
-                    var newGuy =  Instantiate(blueBar, transform.position, Quaternion.identity).GetComponent<BlueBarScript>();
-                    curPoint.isFull = true;
-                    newGuy.r = r;
-                    newGuy.c = c;
+            ref int curUnit = ref bus.currentUnit;
 
-                    bgMoney -= 40;
-                }
-            }
-            //Place Shoot on 2 key
+            //place unit
             if(Input.GetKeyDown(KeyCode.Keypad2)){
-                if(!curPoint.isFull && bgMoney >= 30){
-                    var newGuy = Instantiate(blueShoot, transform.position, Quaternion.identity).GetComponent<BlueShoot>();
-                    curPoint.isFull = true;
-                    newGuy.r = r;
-                    newGuy.c = c;
-
-                    bgMoney -= 30;
-                }
-            }
-            //Place Walekr on 3 key
-            if(Input.GetKeyDown(KeyCode.Keypad3)){
-                if(bgMoney >= 60){
-                    Instantiate(blueWalk, transform.position, Quaternion.identity);
-
-                    bgMoney -= 60;
-                }
-            }
-            //place runner on 4
-            if(Input.GetKeyDown(KeyCode.Keypad4)){
-                if(bgMoney >= 50){
-                    Instantiate(blueRunner, transform.position, Quaternion.identity);
-
-                    bgMoney -= 50;
+                if(bus.Units[curUnit].cost <= bgMoney){
+                    if(curUnit == 2 || curUnit == 3){
+                        if(!curPoint.isFull){
+                            var newguy = Instantiate(bus.Units[bus.currentUnit].myObject, curPoint.pos, Quaternion.identity);
+                            bgMoney -= bus.Units[bus.currentUnit].cost;
+                            curPoint.isFull = true;
+                            if(curUnit == 2){
+                                var ngs = newguy.GetComponent<BlueShoot>();
+                                ngs.r = r;
+                                ngs.c = c;
+                            }
+                            else{
+                                var ngs = newguy.GetComponent<BlueBarScript>();
+                                ngs.r = r;
+                                ngs.c = c;
+                            }
+                        }
+                    }
+                    else{
+                        Instantiate(bus.Units[bus.currentUnit].myObject, curPoint.pos, Quaternion.identity);
+                        bgMoney -= bus.Units[bus.currentUnit].cost;
+                    }
                 }
             }
         }

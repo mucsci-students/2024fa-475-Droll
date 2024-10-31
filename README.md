@@ -6,10 +6,9 @@ Red(left):
 WS - control player verticlly
 	selector verticlly based on player position
 AD - control selector horizontally
-1 - spawns barrior unit at the cost of 40
-2 - spawns shooter unit at the cost of 30
-3 - spawns walker unit at the cost of 60
-4 - spawns runner unit at the cost of 50
+1 - moves unit selector to the left
+2 - places unit selected
+3 - moves unit selector to the right
 Z - Heal buff for current row friendly units
 X - Atk against current row enemy units
 C - speed buff for current row friendly offensive units
@@ -17,14 +16,13 @@ C - speed buff for current row friendly offensive units
 Blue(right):
 up/down arrows - control player verticlly
 	selector verticlly based on player position
-left/right arrors - control selector horizontally
-num1 - spawns barrior unit at the cost of 40
-num2 - spawns shooter unit at the cost of 30
-num3 - spawns walker unit at the cost of 60
-num4 - spawns runner unit at the cost of 50
-num7 - Heal buff for current row friendly units
-num8 - Atk against current row enemy units
-num9 - speed buff for current row friendly offensive units
+numleft/right arrors - control selector horizontally
+num1 - moves unit selector to the left
+num2 - places unit selected
+num3 - moves unit selector to the right
+num4 - Heal buff for current row friendly units
+num5 - Atk against current row enemy units
+num6 - speed buff for current row friendly offensive units
 
 
 ----------How to play----------
@@ -40,9 +38,13 @@ Defesives units are the BARRIOR and SHOOTER, these units take up a grid slot and
 	*shooters fire bullets which can be thought of as offensive units
 	*Barriors are immune to bullets
 Offensive units are the WALKER and RUNNER, these units advance towards the enemy attacking enemy units and base if reached
+	*offensive units of the same type will always kill eachother
 
 Units, when destroyed, give half of their cost to the opposing side, even if destroy by netrual units
-
+	barriors cost 40
+	shooters cost 30
+	walkers cost 60
+	runners cost 50
 
 Netrual Units spawn periodically
 	two walkers will spawn 1 going after each base
@@ -53,7 +55,6 @@ Occassionally, a boss unit will spawn
 	while this unit has a lot of health, which ever side kills it gets a large amount of money
 	The boss will periodically send devistating attacks to both sides, beware!
 		these attacks deal 50% of the hit units max hp, inluding barriors
-//
 
 Actions:
 each player has access to player actions,
