@@ -18,6 +18,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] TMP_Text redH;
     [SerializeField] TMP_Text blueM;
     [SerializeField] TMP_Text redM;
+    [SerializeField] TMP_Text enemyLeft;
 
 
     bool gameOver;
@@ -34,6 +35,9 @@ public class MenuController : MonoBehaviour
     public GameObject redGuy;
     public BlueMoveScript blueGuyScript;
     public GameObject blueGuy;
+    public GraySpawning grayManager;
+    public GameObject bossTimer;
+    public int killsLeft;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +50,8 @@ public class MenuController : MonoBehaviour
         redGuyScript = redGuy.GetComponent<RedMoveScript>();
         blueGuy = GameObject.Find("BlueGuy");
         blueGuyScript = blueGuy.GetComponent<BlueMoveScript>();
+        bossTimer = GameObject.Find("GrayManager");
+        grayManager = bossTimer.GetComponent<GraySpawning>();
         blueWin.SetActive(false);
         redWin.SetActive(false);
         pauseMenu.SetActive(false);
@@ -56,6 +62,7 @@ public class MenuController : MonoBehaviour
         moneyRed = redGuyScript.money;
         healthBlue = rightWallScript.health;
         healthRed = leftWallScript.health;
+        killsLeft = grayManager.bossTimer;
     }
 
     // Update is called once per frame
@@ -69,10 +76,13 @@ public class MenuController : MonoBehaviour
         moneyRed = redGuyScript.money;
         healthBlue = rightWallScript.health;
         healthRed = leftWallScript.health;
+        killsLeft = grayManager.bossTimer;
+        
         MoneyCountBlue();
         MoneyCountRed();
         HealthCountBlue();
         HealthCountRed();
+        killsNeeded();
     }
 
     public void PauseTheGame()
@@ -131,5 +141,9 @@ public class MenuController : MonoBehaviour
     public void HealthCountRed()
     {
         redH.text = "Health = " + healthRed;
+    }
+    public void killsNeeded()
+    {
+        enemyLeft.text = killsLeft + " kills remaining until boss spawn";
     }
 }
