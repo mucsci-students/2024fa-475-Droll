@@ -61,12 +61,12 @@ public class BlueSelect : MonoBehaviour
             //place unit
             if(Input.GetKeyDown(KeyCode.Keypad2)){
                 if(bus.Units[curUnit].cost <= bgMoney){
-                    if(curUnit == 2 || curUnit == 3){
+                    if(curUnit == 0 || curUnit == 1){
                         if(!curPoint.isFull){
                             var newguy = Instantiate(bus.Units[bus.currentUnit].myObject, curPoint.pos, Quaternion.identity);
                             bgMoney -= bus.Units[bus.currentUnit].cost;
                             curPoint.isFull = true;
-                            if(curUnit == 2){
+                            if(curUnit == 1){
                                 var ngs = newguy.GetComponent<BlueShoot>();
                                 ngs.r = r;
                                 ngs.c = c;

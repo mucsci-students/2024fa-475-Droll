@@ -42,10 +42,10 @@ public class BlueUnitSelector : MonoBehaviour
 
         //init array
         Units = new myUnit[4];
-        Units[3] = blueBarUnit;
-        Units[2] = blueShootUnit;
-        Units[1] = blueWalkUnit;
-        Units[0] = blueRunUnit;
+        Units[0] = blueBarUnit;
+        Units[1] = blueShootUnit;
+        Units[2] = blueWalkUnit;
+        Units[3] = blueRunUnit;
 
         currentUnit = 3;
     }
@@ -53,15 +53,15 @@ public class BlueUnitSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Keypad1)){
+        if(Input.GetKeyDown(KeyCode.Keypad3)){
             if(currentUnit == 0){
                 currentUnit = 3;
             }
             else{
-                currentUnit -=1;
+                currentUnit =1;
             }
         }
-        if(Input.GetKeyDown(KeyCode.Keypad3)){
+        if(Input.GetKeyDown(KeyCode.Keypad1)){
             if(currentUnit == 3){
                 currentUnit = 0;
             }
