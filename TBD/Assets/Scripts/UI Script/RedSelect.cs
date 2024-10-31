@@ -20,6 +20,8 @@ public class RedSelect : MonoBehaviour
 
     public LeftWall leftWallScript;
     public bool isDead;
+
+    public RedUnitSelector rus;
     
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,8 @@ public class RedSelect : MonoBehaviour
         r = 2;
 
         leftWallScript = GameObject.Find("left wall").GetComponent<LeftWall>();
+
+        rus = GameObject.Find("RedUnitManager").GetComponent<RedUnitSelector>();
     }
 
     // Update is called once per frame
@@ -58,7 +62,16 @@ public class RedSelect : MonoBehaviour
 
             ref int rgMoney = ref rgScript.money;
 
-            
+
+            //place unit
+            if(Input.GetKeyDown(KeyCode.Alpha2)){
+                if(rus.Units[rus.currentUnit].cost <= rgMoney){
+                    Instantiate(rus.Units[rus.currentUnit].myObject, curPoint.pos, Quaternion.identity);
+                    rgMoney -= rus.Units[rus.currentUnit].cost;
+                }
+            }
+
+            /*
             //Place Barrior on 1 key
             if(Input.GetKeyDown(KeyCode.Alpha1)){
                 if(!curPoint.isFull && rgMoney >= 40){
@@ -97,6 +110,7 @@ public class RedSelect : MonoBehaviour
                     rgMoney -= 50;
                 }
             }
+            */
         }
     }
 }

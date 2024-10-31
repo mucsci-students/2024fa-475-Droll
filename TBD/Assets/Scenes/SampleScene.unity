@@ -3802,6 +3802,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225831199}
   m_CullTransparentMesh: 1
+--- !u!1 &1258158851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1258158853}
+  - component: {fileID: 1258158852}
+  m_Layer: 0
+  m_Name: RedUnitManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1258158852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258158851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d02ead4718c24188805b4a2f5cd255f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redWalker: {fileID: 7680659932980440178, guid: 0a30fe0b4d0702a4b99b9888f934449b, type: 3}
+  redRunner: {fileID: 395176744675448940, guid: 710ada9a633f34b4793cdf798072ee58, type: 3}
+  redBarrior: {fileID: 2079450926822292973, guid: 83952389e23ceae4e9cd51901671fbb4, type: 3}
+  redShoot: {fileID: 8448706715978753902, guid: 9d4b0e010147d624691538e83a6e8341, type: 3}
+  currentUnit: 0
+--- !u!4 &1258158853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258158851}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1320640319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5938,3 +5987,4 @@ SceneRoots:
   - {fileID: 93934952}
   - {fileID: 1007690954}
   - {fileID: 83584225}
+  - {fileID: 1258158853}

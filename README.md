@@ -49,7 +49,6 @@ Netrual Units spawn periodically
 	less often, up to 2 shooters will spawn, these face a random direction
 		a shooter will not spawn if its random slot is already filled
 
-//NOT IMPLEMENTED YET
 Occassionally, a boss unit will spawn
 	while this unit has a lot of health, which ever side kills it gets a large amount of money
 	The boss will periodically send devistating attacks to both sides, beware!
