@@ -47,7 +47,7 @@ public class BlueUnitSelector : MonoBehaviour
         Units[2] = blueWalkUnit;
         Units[3] = blueRunUnit;
 
-        currentUnit = 3;
+        currentUnit = 0;
     }
 
     // Update is called once per frame
