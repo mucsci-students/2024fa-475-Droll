@@ -18,6 +18,8 @@ public class RedSelect : MonoBehaviour
     public bool isDead;
 
     public RedUnitSelector rus;
+
+    [SerializeField] private AudioClip spawnSound;
     
     // Start is called before the first frame update
     void Start()
@@ -65,6 +67,7 @@ public class RedSelect : MonoBehaviour
                 if(rus.Units[curUnit].cost <= rgMoney){
                     if(curUnit == 1 || curUnit == 0){
                         if(!curPoint.isFull){
+                            SoundFXManager.instance.PlaySoundFXClip(spawnSound, transform, 1f);
                             var newguy = Instantiate(rus.Units[rus.currentUnit].myObject, curPoint.pos, Quaternion.identity);
                             rgMoney -= rus.Units[rus.currentUnit].cost;
                             curPoint.isFull = true;
@@ -81,6 +84,7 @@ public class RedSelect : MonoBehaviour
                         }
                     }
                     else{
+                        SoundFXManager.instance.PlaySoundFXClip(spawnSound, transform, 1f);
                         Instantiate(rus.Units[rus.currentUnit].myObject, curPoint.pos, Quaternion.identity);
                         rgMoney -= rus.Units[rus.currentUnit].cost;
                     }
