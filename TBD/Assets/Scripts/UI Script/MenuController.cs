@@ -26,6 +26,8 @@ public class MenuController : MonoBehaviour
     public int healthRed;
     public int unitBlue;
     public int unitRed;
+    public int curPage;
+    public int maxPage;
     public LeftWall leftWallScript;
     public GameObject leftWall;
     public RightWall rightWallScript;
@@ -90,6 +92,8 @@ public class MenuController : MonoBehaviour
         blueOutlineThree = GameObject.Find("outlineBlueThree");
         blueOutlineFour = GameObject.Find("outlineBlueFour");
         updateSelect();
+        curPage = 0;
+        maxPage = 1;
     }
 
     // Update is called once per frame
@@ -223,5 +227,25 @@ public class MenuController : MonoBehaviour
                     blueOutlineFour.SetActive(true);
     }
 
+    }
+    public void nextPage()
+    {
+        if(curPage == maxPage)
+            return;
+        string oldPage = curPage.ToString();
+        GameObject.Find(oldPage).GetComponent<SpriteRenderer>().sortingOrder = 2;
+        curPage += 1;
+        string newPage = curPage.ToString();
+        GameObject.Find(newPage).GetComponent<SpriteRenderer>().sortingOrder = 4;
+    }
+    public void previousPage()
+    {
+        if (curPage == 0)
+            return;
+        string oldPage = curPage.ToString();
+        GameObject.Find(oldPage).GetComponent<SpriteRenderer>().sortingOrder = 2;
+        curPage -= 1;
+        string newPage = curPage.ToString();
+        GameObject.Find(newPage).GetComponent<SpriteRenderer>().sortingOrder = 4;
     }
 }
