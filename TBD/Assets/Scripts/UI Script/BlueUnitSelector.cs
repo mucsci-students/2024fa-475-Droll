@@ -58,7 +58,7 @@ public class BlueUnitSelector : MonoBehaviour
                 currentUnit = 3;
             }
             else{
-                currentUnit =1;
+                currentUnit -=1;
             }
         }
         if(Input.GetKeyDown(KeyCode.Keypad1)){

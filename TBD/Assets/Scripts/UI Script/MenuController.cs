@@ -8,7 +8,6 @@ using TMPro;
 
 public class MenuController : MonoBehaviour
 {
-    //[SerializeField] GameObject mainMenu;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject pauseButton;
     [SerializeField] GameObject blueWin;
@@ -25,6 +24,8 @@ public class MenuController : MonoBehaviour
     public int moneyRed;
     public int healthBlue;
     public int healthRed;
+    public int unitBlue;
+    public int unitRed;
     public LeftWall leftWallScript;
     public GameObject leftWall;
     public RightWall rightWallScript;
@@ -36,10 +37,23 @@ public class MenuController : MonoBehaviour
     public GraySpawning grayManager;
     public GameObject bossTimer;
     public int killsLeft;
+    public RedUnitSelector redUnitCur;
+    public GameObject redUnitManager;
+    public BlueUnitSelector blueUnitCur;
+    public GameObject blueUnitManager;
+    public GameObject redOutlineOne;
+    public GameObject redOutlineTwo;
+    public GameObject redOutlineThree;
+    public GameObject redOutlineFour;
+    public GameObject blueOutlineOne;
+    public GameObject blueOutlineTwo;
+    public GameObject blueOutlineThree;
+    public GameObject blueOutlineFour;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Set vars for helper functions.
         Time.timeScale = 1f;
         leftWall = GameObject.Find("left wall");
         leftWallScript = leftWall.GetComponent<LeftWall>();
@@ -51,6 +65,10 @@ public class MenuController : MonoBehaviour
         blueGuyScript = blueGuy.GetComponent<BlueMoveScript>();
         bossTimer = GameObject.Find("GrayManager");
         grayManager = bossTimer.GetComponent<GraySpawning>();
+        blueUnitManager = GameObject.Find("BlueUnitManager");
+        blueUnitCur = blueUnitManager.GetComponent<BlueUnitSelector>();
+        redUnitManager = GameObject.Find("RedUnitManager");
+        redUnitCur = redUnitManager.GetComponent<RedUnitSelector>();
         blueWin.SetActive(false);
         redWin.SetActive(false);
         pauseMenu.SetActive(false);
@@ -61,28 +79,47 @@ public class MenuController : MonoBehaviour
         healthBlue = rightWallScript.health;
         healthRed = leftWallScript.health;
         killsLeft = grayManager.bossTimer;
+        unitBlue = 1;
+        unitRed = 1;
+        redOutlineOne = GameObject.Find("outlineRedOne");
+        redOutlineTwo = GameObject.Find("outlineRedTwo");
+        redOutlineThree = GameObject.Find("outlineRedThree");
+        redOutlineFour = GameObject.Find("outlineRedFour");
+        blueOutlineOne = GameObject.Find("outlineBlueOne");
+        blueOutlineTwo = GameObject.Find("outlineBlueTwo");
+        blueOutlineThree = GameObject.Find("outlineBlueThree");
+        blueOutlineFour = GameObject.Find("outlineBlueFour");
+        updateSelect();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Check if game should end
         if((healthBlue<=0 || healthRed<=0))
         {
             blueWinBool = (healthRed <= 0);
             Time.timeScale = 0f;
             EndScreen();
         }
+        //Update vars.
         moneyBlue = blueGuyScript.money;
         moneyRed = redGuyScript.money;
         healthBlue = rightWallScript.health;
         healthRed = leftWallScript.health;
         killsLeft = grayManager.bossTimer;
         
+
+        //Call helper functions.
         MoneyCountBlue();
         MoneyCountRed();
         HealthCountBlue();
         HealthCountRed();
         killsNeeded();
+        if(unitBlue != blueUnitCur.currentUnit || unitRed != redUnitCur.currentUnit)
+        {
+            updateSelect();
+        }
     }
 
     public void PauseTheGame()
@@ -107,6 +144,7 @@ public class MenuController : MonoBehaviour
     }
     public void Instructions()
     {
+        //Bring up instruction menu.
         pauseMenu.SetActive(false);
         howToPlay.SetActive(true);
     }
@@ -117,7 +155,6 @@ public class MenuController : MonoBehaviour
     }
     public void EndScreen()
     {   
-        //Time.timeScale = 0f;
        if(blueWinBool)
        {
         blueWin.SetActive(true);
@@ -146,5 +183,45 @@ public class MenuController : MonoBehaviour
     public void killsNeeded()
     {
         enemyLeft.text = killsLeft + " kills remaining until boss spawn";
+    }
+    public void updateSelect()
+    {
+    if(unitRed != redUnitCur.currentUnit)
+    {
+        unitRed = redUnitCur.currentUnit;
+        redOutlineOne.SetActive(false);
+        redOutlineTwo.SetActive(false);
+        redOutlineThree.SetActive(false);
+        redOutlineFour.SetActive(false);
+        if(unitRed == 0)
+            redOutlineOne.SetActive(true);
+            else
+            if(unitRed == 1)
+                redOutlineTwo.SetActive(true);
+                else
+                if(unitRed == 2)
+                    redOutlineThree.SetActive(true);
+                    else
+                    redOutlineFour.SetActive(true);
+    }
+    if(unitBlue != blueUnitCur.currentUnit)
+    {
+        unitBlue = blueUnitCur.currentUnit;
+        blueOutlineOne.SetActive(false);
+        blueOutlineTwo.SetActive(false);
+        blueOutlineThree.SetActive(false);
+        blueOutlineFour.SetActive(false);
+        if(unitBlue == 0)
+            blueOutlineOne.SetActive(true);
+            else
+            if(unitBlue == 1)
+                blueOutlineTwo.SetActive(true);
+                else
+                if(unitBlue == 2)
+                    blueOutlineThree.SetActive(true);
+                    else
+                    blueOutlineFour.SetActive(true);
+    }
+
     }
 }
