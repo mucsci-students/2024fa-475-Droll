@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundFXManager : MonoBehaviour
+public class SoundMusicManager : MonoBehaviour
 {
-    public static SoundFXManager instance;
+    public static SoundMusicManager instance;
 
-    [SerializeField] private AudioSource soundFXObject;
+    [SerializeField] private AudioSource soundMusicObject;
 
     private void Awake(){
         if (instance == null){
@@ -16,9 +16,9 @@ public class SoundFXManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume){
+    public void PlaySoundMusicClip(AudioClip audioClip, Transform spawnTransform, float volume){
         //spawn
-        AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
+        AudioSource audioSource = Instantiate(soundMusicObject, spawnTransform.position, Quaternion.identity);
 
         //assign
         audioSource.clip = audioClip;
