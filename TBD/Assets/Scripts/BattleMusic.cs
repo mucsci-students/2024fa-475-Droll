@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class BattleMusic : MonoBehaviour
 {
-    public GameObject prelude;
-    public GameObject battle;
+
+    [SerializeField] private AudioClip prelude;
+    [SerializeField] private AudioClip battle;
+
+    public bool isPrelude;
+
+    public float timePassed;
     // Start is called before the first frame update
     void Start()
     {
-        prelude = GameObject.Find("PreludeSong");
-        battle = GameObject.Find("BattleSong");
+        SoundMusicManager.instance.PlaySoundMusicClip(prelude, transform, 1f);
+        isPrelude = true;
+    }
 
-        prelude.GetComponent<AudioSource>().Play();
-        battle.GetComponent<AudioSource>().PlayDelayed(40f);
+    void Update(){
+        timePassed += Time.deltaTime;
+        if(isPrelude){
+            if(timePassed >= 40f){
+                timePassed = 0;
+                isPrelude = false;
+                SoundMusicManager.instance.PlaySoundMusicClip(battle, transform, 1f);
+            }
+        }
+        else{
+            if(timePassed >= 96){
+                timePassed = 0;
+                SoundMusicManager.instance.PlaySoundMusicClip(battle, transform, 1f);
+            } 
+        }
     }
 }
