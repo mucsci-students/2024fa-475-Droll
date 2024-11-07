@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] GameObject blueWin;
     [SerializeField] GameObject redWin;
     [SerializeField] GameObject howToPlay;
+    [SerializeField] GameObject settingsMenu;
     [SerializeField] TMP_Text blueH;
     [SerializeField] TMP_Text redH;
     [SerializeField] TMP_Text blueM;
@@ -139,6 +140,11 @@ public class MenuController : MonoBehaviour
         howToPlay.SetActive(false);
         pauseButton.SetActive(true);
     }
+    public void SettingsMenu()
+    {
+        settingsMenu.SetActive(true);
+        pauseMenu.SetActive(false);
+    }
     public void ExitToMenu()
     {
         //Go to main menu
@@ -154,6 +160,7 @@ public class MenuController : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         howToPlay.SetActive(false);
+        settingsMenu.SetActive(false);
     }
     public void EndScreen()
     {   
