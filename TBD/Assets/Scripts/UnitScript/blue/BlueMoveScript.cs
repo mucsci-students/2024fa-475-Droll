@@ -31,6 +31,10 @@ public class BlueMoveScript : MonoBehaviour
     public bool AtkCD;
     public bool SpdUpCD;
 
+    public float HealTimer;
+    public float AtkTimer;
+    public float SpdUpTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +48,10 @@ public class BlueMoveScript : MonoBehaviour
         transform.position = new Vector3(gridSprite.bounds.extents.x - gridSprite.bounds.extents.x / 7f , 0f, 0f);
 
         rightWallScript = GameObject.Find("right wall").GetComponent<RightWall>();
+
+        HealTimer = 30f;
+        AtkTimer = 30f;
+        SpdUpTimer = 30f;
     }
 
     // Update is called once per frame
@@ -97,19 +105,19 @@ public class BlueMoveScript : MonoBehaviour
     IEnumerator healCDcounter()
     {
         HealCD = true;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(HealTimer);
         HealCD = false;
     }
     IEnumerator atkCDcounter()
     {
         AtkCD = true;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(AtkTimer);
         AtkCD = false;
     }
     IEnumerator spdupCDcounter()
     {
         SpdUpCD = true;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(SpdUpTimer);
         SpdUpCD = false;
     }
     public int GetBlueMoney(){
