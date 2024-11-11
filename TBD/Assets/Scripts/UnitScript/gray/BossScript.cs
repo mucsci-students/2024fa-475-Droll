@@ -30,6 +30,8 @@ public class BossScript : MonoBehaviour
         redGuyScript = GameObject.Find("RedGuy").GetComponent<RedMoveScript>();
 
         myGridScript = GameObject.Find("Grid").GetComponent<GridManager>();
+    
+        killNum = GameObject.Find("CutManager").GetComponent<CutScene>();
     }
 
     // Update is called once per frame
@@ -45,6 +47,7 @@ public class BossScript : MonoBehaviour
 
             gManager.bossAlive = false;
 
+            killNum.cutSceneNo++;
             Destroy(gameObject);
         }
 
