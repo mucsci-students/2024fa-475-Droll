@@ -19,6 +19,8 @@ public class BossScript : MonoBehaviour
     public GameObject ballRight;
     public GameObject ballLeft;
 
+    private CutScene cutScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +33,7 @@ public class BossScript : MonoBehaviour
 
         myGridScript = GameObject.Find("Grid").GetComponent<GridManager>();
     
-        killNum = GameObject.Find("CutManager").GetComponent<CutScene>();
+        cutScene = GameObject.Find("CutManager").GetComponent<CutScene>();
     }
 
     // Update is called once per frame
@@ -47,7 +49,7 @@ public class BossScript : MonoBehaviour
 
             gManager.bossAlive = false;
 
-            killNum.cutSceneNo++;
+            cutScene.cutSceneNo++;
             Destroy(gameObject);
         }
 
