@@ -51,6 +51,18 @@ public class MenuController : MonoBehaviour
     public GameObject blueOutlineTwo;
     public GameObject blueOutlineThree;
     public GameObject blueOutlineFour;
+    public GameObject redSOutline;
+    public GameObject redAOutline;
+    public GameObject redHOutline;
+    public GameObject blueSOutline;
+    public GameObject blueAOutline;
+    public GameObject blueHOutline;
+    public bool redA;
+    public bool redS;
+    public bool redH2;
+    public bool blueA;
+    public bool blueS;
+    public bool blueH2;
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +92,12 @@ public class MenuController : MonoBehaviour
         moneyRed = redGuyScript.money;
         healthBlue = rightWallScript.health;
         healthRed = leftWallScript.health;
+        redH2 = redGuyScript.HealCD;
+        redS = redGuyScript.SpdUpCD;
+        redA = redGuyScript.AtkCD;
+        blueH2 = blueGuyScript.HealCD;
+        blueS = blueGuyScript.SpdUpCD;
+        blueA = blueGuyScript.AtkCD;
         killsLeft = grayManager.bossTimer;
         unitBlue = 1;
         unitRed = 1;
@@ -91,6 +109,12 @@ public class MenuController : MonoBehaviour
         blueOutlineTwo = GameObject.Find("outlineBlueTwo");
         blueOutlineThree = GameObject.Find("outlineBlueThree");
         blueOutlineFour = GameObject.Find("outlineBlueFour");
+        redSOutline = GameObject.Find("RedSCD");
+        redAOutline = GameObject.Find("RedACD");
+        redHOutline = GameObject.Find("RedHCD");
+        blueSOutline = GameObject.Find("BlueSCD");
+        blueAOutline = GameObject.Find("BlueACD");
+        blueHOutline = GameObject.Find("BlueHCD");
         updateSelect();
 
     }
@@ -111,7 +135,12 @@ public class MenuController : MonoBehaviour
         healthBlue = rightWallScript.health;
         healthRed = leftWallScript.health;
         killsLeft = grayManager.bossTimer;
-        
+        redH2 = redGuyScript.HealCD;
+        redS = redGuyScript.SpdUpCD;
+        redA = redGuyScript.AtkCD;
+        blueH2 = blueGuyScript.HealCD;
+        blueS = blueGuyScript.SpdUpCD;
+        blueA = blueGuyScript.AtkCD;
 
         //Call helper functions.
         MoneyCountBlue();
@@ -119,6 +148,7 @@ public class MenuController : MonoBehaviour
         HealthCountBlue();
         HealthCountRed();
         killsNeeded();
+        cooldownCheck();
         if(unitBlue != blueUnitCur.currentUnit || unitRed != redUnitCur.currentUnit)
         {
             updateSelect();
@@ -232,6 +262,15 @@ public class MenuController : MonoBehaviour
                     blueOutlineFour.SetActive(true);
     }
 
+    }
+    public void cooldownCheck()
+    {
+        blueSOutline.SetActive(blueS);
+        blueAOutline.SetActive(blueA);
+        blueHOutline.SetActive(blueH2);
+        redSOutline.SetActive(redS);
+        redAOutline.SetActive(redA);
+        redHOutline.SetActive(redH2);
     }
 
 }
