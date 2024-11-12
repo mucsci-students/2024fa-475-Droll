@@ -29,7 +29,7 @@ public class CDScript : MonoBehaviour
         {
             CDObject.GetComponent<SpriteRenderer>().sortingOrder = -1;
         }
-        if(Input.GetKeyDown(KeyTest) && !isOnCD){
+        if(Input.GetKeyDown(KeyTest) && !isOnCD && Time.timeScale != 0){
             isOnCD = true;
             CDObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
             curTime = 0f;

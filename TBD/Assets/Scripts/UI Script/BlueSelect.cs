@@ -42,10 +42,10 @@ public class BlueSelect : MonoBehaviour
         isDead = rightWallScript.blueGameOver;
         if (!isDead){
 
-            if(Input.GetKeyDown(KeyCode.RightArrow)){
+            if(Input.GetKeyDown(KeyCode.RightArrow) && Time.timeScale != 0){
                 c = Mathf.Min(c+1, 11);
             }
-            if(Input.GetKeyDown(KeyCode.LeftArrow)){
+            if(Input.GetKeyDown(KeyCode.LeftArrow) && Time.timeScale != 0){
                 c = Mathf.Max(c-1, 7);
             }
 
@@ -59,7 +59,7 @@ public class BlueSelect : MonoBehaviour
             ref int curUnit = ref bus.currentUnit;
 
             //place unit
-            if(Input.GetKeyDown(KeyCode.Keypad2)){
+            if(Input.GetKeyDown(KeyCode.Keypad2) && Time.timeScale != 0){
                 if(bus.Units[curUnit].cost <= bgMoney){
                     if(curUnit == 0 || curUnit == 1){
                         if(!curPoint.isFull){

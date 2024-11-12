@@ -86,15 +86,15 @@ public class RedMoveScript : MonoBehaviour
             }
 
             //hero actions
-            if(Input.GetKeyDown(KeyCode.Z) && !HealCD){
+            if(Input.GetKeyDown(KeyCode.Z) && !HealCD && Time.timeScale != 0){
                 Instantiate(redHeal, myGridScript.gridMap[r,6].pos, Quaternion.identity);
                 StartCoroutine(healCDcounter());
             }
-            if(Input.GetKeyDown(KeyCode.X) && !AtkCD){
+            if(Input.GetKeyDown(KeyCode.X) && !AtkCD && Time.timeScale != 0){
                 Instantiate(redAtk, myGridScript.gridMap[r,6].pos, Quaternion.identity);
                 StartCoroutine(atkCDcounter());
             }
-            if(Input.GetKeyDown(KeyCode.C) && !SpdUpCD){
+            if(Input.GetKeyDown(KeyCode.C) && !SpdUpCD && Time.timeScale != 0){
                 Instantiate(redSpdUp, myGridScript.gridMap[r,6].pos, Quaternion.identity);
                 StartCoroutine(spdupCDcounter());
             }

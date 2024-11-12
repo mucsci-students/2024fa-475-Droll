@@ -45,10 +45,10 @@ public class RedSelect : MonoBehaviour
         if (!isDead){
 
             //adjust selector horizontaly based on keys
-            if(Input.GetKeyDown(KeyCode.D)){
+            if(Input.GetKeyDown(KeyCode.D) && Time.timeScale != 0){
                 c = Mathf.Min(c+1, 5);
             }
-            if(Input.GetKeyDown(KeyCode.A)){
+            if(Input.GetKeyDown(KeyCode.A) && Time.timeScale != 0){
                 c = Mathf.Max(c-1, 1);
             }
 
@@ -63,7 +63,7 @@ public class RedSelect : MonoBehaviour
             ref int curUnit = ref rus.currentUnit;
 
             //place unit
-            if(Input.GetKeyDown(KeyCode.Alpha2)){
+            if(Input.GetKeyDown(KeyCode.Alpha2) && Time.timeScale != 0){
                 if(rus.Units[curUnit].cost <= rgMoney){
                     if(curUnit == 1 || curUnit == 0){
                         if(!curPoint.isFull){
