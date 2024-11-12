@@ -90,6 +90,10 @@ public class BlueRunnerScript : MonoBehaviour
             movespeed = 6;
         }
 
+        //hits boss
+        else if (col.gameObject.layer == 27){
+            health -= 999;
+        }
         //hit by bossball
         else if (col.gameObject.layer == 28){
             health -= 5;

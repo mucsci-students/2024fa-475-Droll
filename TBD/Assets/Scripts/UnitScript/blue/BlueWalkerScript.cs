@@ -87,7 +87,7 @@ public class BlueWalkerScript : MonoBehaviour
         }
 
         //hits boss
-        else if (col.gameObject.layer == 28){
+        else if (col.gameObject.layer == 27){
             health -= 999;
         }
         //hit by bossball
