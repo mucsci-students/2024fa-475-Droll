@@ -28,7 +28,7 @@ public class GraySpawning : MonoBehaviour
     {
         gridScript = GameObject.Find("Grid").GetComponent<GridManager>();
         c = 6;
-        bossTimer = 50;
+        bossTimer = 30;
     }
 
     // Update is called once per frame
@@ -86,7 +86,7 @@ public class GraySpawning : MonoBehaviour
         if(bossTimer <= 0 && !bossAlive){
             Instantiate(boss, gridScript.gridMap[2,c].pos, Quaternion.identity);
             bossAlive = true;
-            bossTimer = 50;
+            bossTimer = 30;
         }
     }
 }

@@ -68,7 +68,7 @@ public class GrayWalkerRightScript : MonoBehaviour
             else{
                 lastHitRed = false;
             }
-            health -= 5;
+            health -= 7;
         }
         //hit by walker
         else if (col.gameObject.layer == 13 || col.gameObject.layer == 12){
