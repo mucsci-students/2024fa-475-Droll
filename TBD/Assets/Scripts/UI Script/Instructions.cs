@@ -13,7 +13,7 @@ public class Instructions : MonoBehaviour
     void Start()
     {
         curPage = 0;
-        maxPage = 1;
+        maxPage = 5;
         curPageText.text = "Page " + (curPage+1) + " / " + (maxPage+1);
     }
 
