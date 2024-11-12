@@ -64,7 +64,7 @@ public class GridManager : MonoBehaviour
             for (int i = 0; i < 6; i++){
                 gridMap[j,i] = new GridPoint(tempPos);
 
-                //Instantiate(tempr, tempPos, Quaternion.identity);
+                Instantiate(tempr, tempPos, Quaternion.identity);
 
                 tempPos.x += hSize;
             }
@@ -78,7 +78,7 @@ public class GridManager : MonoBehaviour
             for (int i = 13; i > 7; i--){
                 gridMap[j,i-1] = new GridPoint(tempPos);
 
-                //Instantiate(tempb, tempPos, Quaternion.identity);
+                Instantiate(tempb, tempPos, Quaternion.identity);
 
                 tempPos.x -= hSize;
             }
@@ -92,7 +92,7 @@ public class GridManager : MonoBehaviour
             
             gridMap[j,6] = new GridPoint(tempPos);
 
-            //Instantiate(tempg, tempPos, Quaternion.identity);
+            Instantiate(tempg, tempPos, Quaternion.identity);
 
             tempPos.y -= vSize;
         }
