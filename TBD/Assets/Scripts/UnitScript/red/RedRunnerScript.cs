@@ -15,7 +15,7 @@ public class RedRunnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 10;
+        health = 20;
         movespeed = 3f;
 
         blueGuyScript = GameObject.Find("BlueGuy").GetComponent<BlueMoveScript>();
@@ -78,11 +78,11 @@ public class RedRunnerScript : MonoBehaviour
         
         //hit by healpowerup
         else if (col.gameObject.layer == 21){
-            health += 10;
+            health += 20;
         }
         //hit by atkpowerup
         else if (col.gameObject.layer == 24){
-            health -= 7;
+            health -= 14;
         }
         //hit by spdUPpowerup
         else if (col.gameObject.layer == 25){
@@ -95,7 +95,7 @@ public class RedRunnerScript : MonoBehaviour
         }
         //hit by bossball
         else if (col.gameObject.layer == 28){
-            health -= 5;
+            health -= 10;
         }
     }
 }
