@@ -9,7 +9,7 @@ public class StartGame : MonoBehaviour
 
     public void StartGameNow()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     public void Instructions()
     {
@@ -18,6 +18,9 @@ public class StartGame : MonoBehaviour
     public void Settings()
     {
         //Settings menu
+    }
+    public void QuitGame(){
+        Application.Quit();
     }
 }
 

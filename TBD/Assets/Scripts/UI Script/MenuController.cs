@@ -64,6 +64,8 @@ public class MenuController : MonoBehaviour
     public bool blueS;
     public bool blueH2;
 
+    public float timePassed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -122,13 +124,19 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Check if game should end
-        if((healthBlue<=0 || healthRed<=0))
-        {
-            blueWinBool = (healthRed <= 0);
-            Time.timeScale = 0f;
-            EndScreen();
+        if(timePassed < 10f){
+            timePassed += Time.deltaTime;
         }
+        else{
+            //Check if game should end
+            if((healthBlue<=0 || healthRed<=0))
+            {
+                blueWinBool = (healthRed <= 0);
+                Time.timeScale = 0f;
+                EndScreen();
+            }
+        }
+        
         //Update vars.
         moneyBlue = blueGuyScript.money;
         moneyRed = redGuyScript.money;
@@ -178,7 +186,7 @@ public class MenuController : MonoBehaviour
     public void ExitToMenu()
     {
         //Go to main menu
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
     public void Instructions()
     {
