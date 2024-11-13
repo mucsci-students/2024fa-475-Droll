@@ -12,6 +12,10 @@ public class RedShoot : MonoBehaviour
 
     public BlueMoveScript blueGuyScript;
 
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip fireSound;
+    [SerializeField] private AudioClip deathSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,8 @@ public class RedShoot : MonoBehaviour
         if(health <= 0){
             blueGuyScript.money += 15;
 
+            SoundFXManager.instance.PlaySoundFXClip(deathSound, transform, 1f);
+
             GameObject.Find("Grid").GetComponent<GridManager>().gridMap[r,c].isFull = false;
             Destroy(gameObject);
         }
@@ -34,6 +40,7 @@ public class RedShoot : MonoBehaviour
         //Fire after 2 sec
         timePassed += Time.deltaTime;
         if (timePassed > 2f){
+            SoundFXManager.instance.PlaySoundFXClip(fireSound, transform, 1f);
             Instantiate(bullet, transform.position, Quaternion.identity);
             timePassed = 0f;
         }
@@ -43,14 +50,17 @@ public class RedShoot : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D col){
         //hit by bullet
         if(col.gameObject.layer == 11 || col.gameObject.layer == 20){
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 4;
         }
         //hit by walker
         else if (col.gameObject.layer == 13 || col.gameObject.layer == 18){
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 20;
         }
         //hit by runner
         else if (col.gameObject.layer == 17){
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 5;
         }
 
@@ -60,11 +70,13 @@ public class RedShoot : MonoBehaviour
         }
         //hit by atkpowerup
         else if (col.gameObject.layer == 24){
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 14;
         }
 
         //hit by bossball
         else if (col.gameObject.layer == 28){
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 10;
         }
     }

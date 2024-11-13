@@ -125,6 +125,8 @@ MonoBehaviour:
   backup: 0
   movespeed: 0
   blueGuyScript: {fileID: 0}
+  hurtSound: {fileID: 8300000, guid: 91ca03411cca9984189121ea99aeded8, type: 3}
+  deathSound: {fileID: 8300000, guid: f914e3f95e6c96f4f9031a954360ebe3, type: 3}
 --- !u!95 &822312574933734127
 Animator:
   serializedVersion: 5

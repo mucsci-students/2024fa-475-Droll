@@ -100,6 +100,8 @@ MonoBehaviour:
   blueGuyScript: {fileID: 0}
   redGuyScript: {fileID: 0}
   lastHitRed: 0
+  hurtSound: {fileID: 8300000, guid: e831579c28b35534a93dd0d1a3c99363, type: 3}
+  deathSound: {fileID: 8300000, guid: 145eabcd32f5d1440b377ab2eaec03bc, type: 3}
 --- !u!50 &1100187004575314083
 Rigidbody2D:
   serializedVersion: 4

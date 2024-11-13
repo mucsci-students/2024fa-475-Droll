@@ -21,6 +21,10 @@ public class BossScript : MonoBehaviour
 
     private CutScene cutScene;
 
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip fireSound;
+    [SerializeField] private AudioClip deathSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +51,7 @@ public class BossScript : MonoBehaviour
                 blueGuyScript.money += 100;
             }
 
+            SoundFXManager.instance.PlaySoundFXClip(deathSound, transform, 1f);
             gManager.bossAlive = false;
 
             cutScene.cutSceneNo++;
@@ -55,6 +60,7 @@ public class BossScript : MonoBehaviour
 
         timePassed += Time.deltaTime;
         if(timePassed > 10f){
+            SoundFXManager.instance.PlaySoundFXClip(fireSound, transform, 1f);
             for(int i = 0; i < 5; i++){
                 Instantiate(ballRight, myGridScript.gridMap[i,6].pos, Quaternion.identity);
                 Instantiate(ballLeft, myGridScript.gridMap[i,6].pos, Quaternion.identity);
@@ -72,6 +78,7 @@ public class BossScript : MonoBehaviour
             else{
                 lastHitRed = false;
             }
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 4;
         }
         //hit by walker
@@ -82,6 +89,7 @@ public class BossScript : MonoBehaviour
             else{
                 lastHitRed = false;
             }
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 20;
         }
         //hit by runner
@@ -92,6 +100,7 @@ public class BossScript : MonoBehaviour
             else{
                 lastHitRed = false;
             }
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 10;
         }
     }

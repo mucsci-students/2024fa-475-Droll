@@ -14,6 +14,9 @@ public class GrayWalkerLeftScript : MonoBehaviour
     public RedMoveScript redGuyScript;
     public bool lastHitRed;
 
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip deathSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,8 @@ public class GrayWalkerLeftScript : MonoBehaviour
             else{
                 blueGuyScript.money += 30;
             }
+
+            SoundFXManager.instance.PlaySoundFXClip(deathSound, transform, 1f);
 
             GameObject.Find("GrayManager").GetComponent<GraySpawning>().bossTimer -= 1;
 
@@ -68,6 +73,7 @@ public class GrayWalkerLeftScript : MonoBehaviour
             else{
                 lastHitRed = false;
             }
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 7;
         }
         //hit by walker
@@ -78,7 +84,7 @@ public class GrayWalkerLeftScript : MonoBehaviour
             else{
                 lastHitRed = false;
             }
-            health -= 20;
+            health -= 999;
         }
         //hit by runner
         else if (col.gameObject.layer == 17 || col.gameObject.layer == 16){
@@ -88,6 +94,7 @@ public class GrayWalkerLeftScript : MonoBehaviour
             else{
                 lastHitRed = false;
             }
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 5;
         }
         //hits enemy barrior
@@ -113,6 +120,7 @@ public class GrayWalkerLeftScript : MonoBehaviour
             else{
                 lastHitRed = false;
             }
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 14;
         }
     }

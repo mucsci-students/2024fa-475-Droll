@@ -57,3 +57,5 @@ MonoBehaviour:
   shootDir: 0
   bossTimer: 0
   bossAlive: 0
+  bossSpawnSound: {fileID: 8300000, guid: 337285d74d6411642bee93d4bad7b63d, type: 3}
+  otherSpawnSound: {fileID: 8300000, guid: 796364a549c839f4c9cba4d841721353, type: 3}

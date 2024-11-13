@@ -14,6 +14,10 @@ public class GrayShootLeft : MonoBehaviour
     public RedMoveScript redGuyScript;
     public bool lastHitRed;
 
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip fireSound;
+    [SerializeField] private AudioClip deathSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,7 @@ public class GrayShootLeft : MonoBehaviour
             else{
                 blueGuyScript.money += 15;
             }
+            SoundFXManager.instance.PlaySoundFXClip(deathSound, transform, 1f);
 
             GameObject.Find("Grid").GetComponent<GridManager>().gridMap[r,c].isFull = false;
             GameObject.Find("GrayManager").GetComponent<GraySpawning>().bossTimer -= 1;
@@ -44,6 +49,7 @@ public class GrayShootLeft : MonoBehaviour
         //Fire after 2 sec
         timePassed += Time.deltaTime;
         if (timePassed > 2f){
+            SoundFXManager.instance.PlaySoundFXClip(fireSound, transform, 1f);
             Instantiate(bullet, transform.position, Quaternion.identity);
             timePassed = 0f;
         }
@@ -59,6 +65,7 @@ public class GrayShootLeft : MonoBehaviour
             else{
                 lastHitRed = false;
             }
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 4;
         }
         //hit by walker
@@ -69,6 +76,7 @@ public class GrayShootLeft : MonoBehaviour
             else{
                 lastHitRed = false;
             }
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 20;
         }
         //hit by runner
@@ -79,6 +87,7 @@ public class GrayShootLeft : MonoBehaviour
             else{
                 lastHitRed = false;
             }
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 5;
         }
 
@@ -90,6 +99,7 @@ public class GrayShootLeft : MonoBehaviour
             else{
                 lastHitRed = false;
             }
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 14;
         }
     }

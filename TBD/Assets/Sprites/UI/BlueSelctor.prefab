@@ -141,6 +141,7 @@ MonoBehaviour:
   rightWallScript: {fileID: 0}
   isDead: 0
   bus: {fileID: 0}
+  spawnSound: {fileID: 8300000, guid: 3852ac2a1540eee4aaf9d8d82be3d742, type: 3}
 --- !u!1 &3411144155882602930
 GameObject:
   m_ObjectHideFlags: 0

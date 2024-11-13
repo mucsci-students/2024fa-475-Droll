@@ -23,6 +23,9 @@ public class GraySpawning : MonoBehaviour
     public int bossTimer;
     public bool bossAlive;
 
+    [SerializeField] private AudioClip bossSpawnSound;
+    [SerializeField] private AudioClip otherSpawnSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +42,7 @@ public class GraySpawning : MonoBehaviour
 
         //spawns walkers
         if (timePassed > 5f){
+            SoundFXManager.instance.PlaySoundFXClip(otherSpawnSound, transform, 1f);
             r = Random.Range(0, 5);
             Instantiate(walkLeft, gridScript.gridMap[r,c].pos, Quaternion.identity);
             r = Random.Range(0, 5);
@@ -52,12 +56,14 @@ public class GraySpawning : MonoBehaviour
             shootDir = Random.Range(0,2);
             r = Random.Range(0, 5);
             if(shootDir == 1 && !gridScript.gridMap[r,c].isFull){
+                SoundFXManager.instance.PlaySoundFXClip(otherSpawnSound, transform, 1f);
                 var newGuy = Instantiate(ShootLeft, gridScript.gridMap[r,c].pos, Quaternion.identity).GetComponent<GrayShootLeft>();
                 gridScript.gridMap[r,c].isFull = true;
                 newGuy.r = r;
                 newGuy.c = c;
             }
             else if (!gridScript.gridMap[r,c].isFull){
+                SoundFXManager.instance.PlaySoundFXClip(otherSpawnSound, transform, 1f);
                 var newGuy = Instantiate(ShootRight, gridScript.gridMap[r,c].pos, Quaternion.identity).GetComponent<GrayShootRight>();
                 gridScript.gridMap[r,c].isFull = true;
                 newGuy.r = r;
@@ -67,12 +73,14 @@ public class GraySpawning : MonoBehaviour
             shootDir = Random.Range(0,2);
             r = Random.Range(0, 5);
             if(shootDir == 1 && !gridScript.gridMap[r,c].isFull){
+                SoundFXManager.instance.PlaySoundFXClip(otherSpawnSound, transform, 1f);
                 var newGuy = Instantiate(ShootLeft, gridScript.gridMap[r,c].pos, Quaternion.identity).GetComponent<GrayShootLeft>();
                 gridScript.gridMap[r,c].isFull = true;
                 newGuy.r = r;
                 newGuy.c = c;
             }
             else if (!gridScript.gridMap[r,c].isFull){
+                SoundFXManager.instance.PlaySoundFXClip(otherSpawnSound, transform, 1f);
                 var newGuy = Instantiate(ShootRight, gridScript.gridMap[r,c].pos, Quaternion.identity).GetComponent<GrayShootRight>();
                 gridScript.gridMap[r,c].isFull = true;
                 newGuy.r = r;
@@ -84,6 +92,7 @@ public class GraySpawning : MonoBehaviour
 
         //spawns boss
         if(bossTimer <= 0 && !bossAlive){
+            SoundFXManager.instance.PlaySoundFXClip(bossSpawnSound, transform, 1f);
             Instantiate(boss, gridScript.gridMap[2,c].pos, Quaternion.identity);
             bossAlive = true;
             bossTimer = 30;

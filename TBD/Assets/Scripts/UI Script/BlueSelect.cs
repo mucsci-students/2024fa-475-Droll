@@ -19,6 +19,8 @@ public class BlueSelect : MonoBehaviour
 
     public BlueUnitSelector bus;
 
+    [SerializeField] private AudioClip spawnSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +65,7 @@ public class BlueSelect : MonoBehaviour
                 if(bus.Units[curUnit].cost <= bgMoney){
                     if(curUnit == 0 || curUnit == 1){
                         if(!curPoint.isFull){
+                            SoundFXManager.instance.PlaySoundFXClip(spawnSound, transform, 1f);
                             var newguy = Instantiate(bus.Units[bus.currentUnit].myObject, curPoint.pos, Quaternion.identity);
                             bgMoney -= bus.Units[bus.currentUnit].cost;
                             curPoint.isFull = true;
@@ -79,6 +82,7 @@ public class BlueSelect : MonoBehaviour
                         }
                     }
                     else{
+                        SoundFXManager.instance.PlaySoundFXClip(spawnSound, transform, 1f);
                         Instantiate(bus.Units[bus.currentUnit].myObject, curPoint.pos, Quaternion.identity);
                         bgMoney -= bus.Units[bus.currentUnit].cost;
                     }

@@ -12,6 +12,9 @@ public class RedRunnerScript : MonoBehaviour
 
     public BlueMoveScript blueGuyScript;
 
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip deathSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,8 @@ public class RedRunnerScript : MonoBehaviour
         //On death
         if(health <= 0){
             blueGuyScript.money += 25;
+
+            SoundFXManager.instance.PlaySoundFXClip(deathSound, transform, 1f);
 
             Destroy(gameObject);
         }
@@ -52,6 +57,7 @@ public class RedRunnerScript : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D col){
         //hit by bullet
         if(col.gameObject.layer == 11 || col.gameObject.layer == 20){
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 7;
         }
         //hit by walker
@@ -82,6 +88,7 @@ public class RedRunnerScript : MonoBehaviour
         }
         //hit by atkpowerup
         else if (col.gameObject.layer == 24){
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 14;
         }
         //hit by spdUPpowerup
@@ -95,6 +102,7 @@ public class RedRunnerScript : MonoBehaviour
         }
         //hit by bossball
         else if (col.gameObject.layer == 28){
+            SoundFXManager.instance.PlaySoundFXClip(hurtSound, transform, 1f);
             health -= 10;
         }
     }

@@ -109,6 +109,9 @@ MonoBehaviour:
   myGridScript: {fileID: 0}
   ballRight: {fileID: 2526913528263910197, guid: 52327b4b5a38484408c336936aa374f2, type: 3}
   ballLeft: {fileID: 4836294137082182810, guid: c4e827742183d444680a0ac223617ac2, type: 3}
+  hurtSound: {fileID: 8300000, guid: 4ad22454125475a4ca4c0dcd7d49e590, type: 3}
+  fireSound: {fileID: 8300000, guid: 7e37ed4f3f926fb4480d526a36982798, type: 3}
+  deathSound: {fileID: 8300000, guid: 80cdade68c4769a4bbcc04484cf449bc, type: 3}
 --- !u!50 &2803081709001772432
 Rigidbody2D:
   serializedVersion: 4

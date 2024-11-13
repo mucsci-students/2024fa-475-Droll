@@ -118,6 +118,10 @@ MonoBehaviour:
   HealCD: 0
   AtkCD: 0
   SpdUpCD: 0
+  HealTimer: 0
+  AtkTimer: 0
+  SpdUpTimer: 0
+  actionSound: {fileID: 8300000, guid: 2bf2f3747616069428b681f7530809ed, type: 3}
 --- !u!61 &6436978312336993814
 BoxCollider2D:
   m_ObjectHideFlags: 0

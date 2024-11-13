@@ -34,6 +34,8 @@ public class RedMoveScript : MonoBehaviour
     public float AtkTimer;
     public float SpdUpTimer;
 
+    [SerializeField] private AudioClip actionSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -87,14 +89,17 @@ public class RedMoveScript : MonoBehaviour
 
             //hero actions
             if(Input.GetKeyDown(KeyCode.Z) && !HealCD && Time.timeScale != 0){
+                SoundFXManager.instance.PlaySoundFXClip(actionSound, transform, 1f);
                 Instantiate(redHeal, myGridScript.gridMap[r,6].pos, Quaternion.identity);
                 StartCoroutine(healCDcounter());
             }
             if(Input.GetKeyDown(KeyCode.X) && !AtkCD && Time.timeScale != 0){
+                SoundFXManager.instance.PlaySoundFXClip(actionSound, transform, 1f);
                 Instantiate(redAtk, myGridScript.gridMap[r,6].pos, Quaternion.identity);
                 StartCoroutine(atkCDcounter());
             }
             if(Input.GetKeyDown(KeyCode.C) && !SpdUpCD && Time.timeScale != 0){
+                SoundFXManager.instance.PlaySoundFXClip(actionSound, transform, 1f);
                 Instantiate(redSpdUp, myGridScript.gridMap[r,6].pos, Quaternion.identity);
                 StartCoroutine(spdupCDcounter());
             }

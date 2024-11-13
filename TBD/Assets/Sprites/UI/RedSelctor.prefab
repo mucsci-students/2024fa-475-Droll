@@ -57,7 +57,7 @@ MonoBehaviour:
   leftWallScript: {fileID: 0}
   isDead: 0
   rus: {fileID: 0}
-  spawnSound: {fileID: 8300000, guid: 796364a549c839f4c9cba4d841721353, type: 3}
+  spawnSound: {fileID: 8300000, guid: a204700fd966a8745a7925e6b64653d4, type: 3}
 --- !u!1 &3985745854748359266
 GameObject:
   m_ObjectHideFlags: 0

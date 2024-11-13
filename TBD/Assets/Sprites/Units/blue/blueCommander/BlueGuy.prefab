@@ -118,6 +118,10 @@ MonoBehaviour:
   HealCD: 0
   AtkCD: 0
   SpdUpCD: 0
+  HealTimer: 0
+  AtkTimer: 0
+  SpdUpTimer: 0
+  actionSound: {fileID: 8300000, guid: c9a437f9342f8ea49aa2205658b5ca9c, type: 3}
 --- !u!50 &5897469023187040775
 Rigidbody2D:
   serializedVersion: 4
