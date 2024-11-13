@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 28459126}
   m_Layer: 0
   m_Name: MusicManager
-  m_TagString: Untagged
+  m_TagString: musicManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3793,7 +3793,7 @@ GameObject:
   - component: {fileID: 1476734797}
   m_Layer: 0
   m_Name: SoundMixerManager
-  m_TagString: Untagged
+  m_TagString: mixerManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4752,7 +4752,7 @@ GameObject:
   - component: {fileID: 1924124452}
   m_Layer: 0
   m_Name: SoundFXManager
-  m_TagString: Untagged
+  m_TagString: fxManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

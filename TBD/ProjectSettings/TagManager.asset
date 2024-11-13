@@ -7,6 +7,9 @@ TagManager:
   - red
   - blue
   - gray
+  - fxManager
+  - musicManager
+  - mixerManager
   layers:
   - Default
   - TransparentFX

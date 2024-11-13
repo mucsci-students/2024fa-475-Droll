@@ -8,6 +8,12 @@ public class SoundFXManager : MonoBehaviour
 
     [SerializeField] private AudioSource soundFXObject;
 
+    public void Start(){
+        if (GameObject.FindGameObjectsWithTag("fxManager").Length > 1){
+            Destroy(gameObject);
+        }
+    }
+
     private void Awake(){
         if (instance == null){
             instance = this;
